@@ -1,0 +1,5 @@
+1. DELETE FROM penjualan_detail WHERE penjualan_detail.id_transaksi_detail = 10;
+2. DELETE FROM penjualan_detail WHERE penjualan_detail.id_transaksi_detail = 5;
+3. UPDATE `pelanggan` SET `nama_pelanggan` = 'Fah G' WHERE `pelanggan`.`id_pelanggan` = 10;
+4. UPDATE `obat` SET `stok` = '200' WHERE `obat`.`id_obat` = 10;
+5. UPDATE `obat` SET `harga_obat` = '3500' WHERE `obat`.`id_obat` = 8;
