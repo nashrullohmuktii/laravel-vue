@@ -1,0 +1,10 @@
+1. SELECT * FROM orders WHERE id_obat = 2
+2. SELECT price FROM orders WHERE date_order <= '2021-01-01 00:00:00'
+3. SELECT date_order FROM orders WHERE id_apoteker = 11
+4. SELECT * FROM obat WHERE expire_obat >= '2023-01-12 00:00:00'
+5. SELECT id FROM obat WHERE nama_obat = 'Paracetamol'
+6. SELET nama_obat FROM obat WHERE id = 10
+7. SELECT * FROM apoteker WHERE umur >= 25
+8. SELECT name FROM apoteker WHERE alamat = 'Bandung'
+9. SELECT name, id FROM apoteker WHERE umur = 25
+10. SELECT alamat FROM apoteker WHERE umur <= 22
