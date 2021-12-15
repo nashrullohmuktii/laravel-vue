@@ -1,0 +1,5 @@
+1. SELECT id_penjualan, penjualan.id_pelanggan, nama_pelanggan, tgl_transaksi FROM penjualan JOIN pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan ORDER BY tgl_transaksi ASC;
+2. SELECT id_penjualan, penjualan.id_pelanggan, nama_pelanggan, tgl_transaksi, total_transaksi FROM penjualan JOIN pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan WHERE total_transaksi>50000 ORDER BY id_penjualan ASC;
+3. SELECT id_penjualan_detail, obat.id_obat, nama_obat, stok FROM penjualan_detail RIGHT JOIN obat ON penjualan_detail.id_obat = obat.id_obat ORDER BY id_obat ASC;
+4. SELECT id_penjualan_detail, obat.id_obat, nama_obat, stok FROM penjualan_detail LEFT JOIN obat ON penjualan_detail.id_obat = obat.id_obat ORDER BY id_obat ASC;
+5. SELECT id_penjualan_detail, obat.id_obat, nama_obat, harga_obat FROM penjualan_detail JOIN obat ON penjualan_detail.id_obat = obat.id_obat WHERE stok < 500 ORDER BY id_penjualan_detail ASC;
