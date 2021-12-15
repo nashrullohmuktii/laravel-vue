@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Des 2021 pada 12.47
+-- Waktu pembuatan: 15 Des 2021 pada 17.07
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -39,7 +39,7 @@ CREATE TABLE `apoteker` (
 --
 
 INSERT INTO `apoteker` (`id`, `name`, `umur`, `alamat`) VALUES
-(1, 'Dio Maulana', 25, 'Padang'),
+(1, 'Dio Maulana', 26, 'Padang'),
 (2, 'Jhon Doe', 22, 'Jakarta'),
 (4, 'Ani', 20, 'Cilacap'),
 (5, 'Budi', 18, 'kampung Duren'),
@@ -67,7 +67,7 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `expire_obat`) VALUES
-(1, 'Paracetamol', '2021-12-14 20:15:18'),
+(1, 'Paracetamol', '2022-12-14 00:00:00'),
 (2, 'Dumin', '2024-12-26 02:15:18'),
 (3, 'Vitamin C', '2024-12-18 18:33:52'),
 (4, 'Vitamin D', '2024-12-26 18:33:52'),
@@ -100,7 +100,6 @@ INSERT INTO `orders` (`id`, `id_obat`, `price`, `date_order`, `id_apoteker`) VAL
 (1, 2, 20000, '2021-12-14 20:20:25', 1),
 (2, 1, 12000, '2021-12-14 20:20:25', 2),
 (3, 9, 50000, '2020-12-22 18:37:36', 11),
-(4, 6, 31000, '2021-09-01 18:37:36', 8),
 (5, 2, 40000, '2018-12-13 18:37:36', 2),
 (6, 3, 30000, '2020-12-01 18:37:36', 1),
 (7, 9, 31200, '2021-09-01 18:37:36', 7),
