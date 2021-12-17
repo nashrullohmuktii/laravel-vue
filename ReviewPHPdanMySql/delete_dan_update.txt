@@ -1,0 +1,5 @@
+1. UPDATE `obat` SET `stok`='45'  WHERE `id` = '6'
+2. UPDATE `obat` SET `expired`= '2026-02-07' WHERE `stok` = '100'
+3. UPDATE `pelanggan` SET `usia` = 19 WHERE `id` = '1'
+4. DELETE FROM `petunjuk_pemakaian` WHERE `dewasa` = '2x3 sehari'
+5. DELETE FROM `detail_orders` WHERE `harga` = 'Rp12000'
