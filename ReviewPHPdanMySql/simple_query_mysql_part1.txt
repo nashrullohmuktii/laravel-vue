@@ -1,0 +1,10 @@
+1. SELECT nama_pelanggan FROM `pelanggan` WHERE usia >= 23
+2. SELECT nama FROM `obat` WHERE stok > 50
+3. SELECT nama FROM `obat` WHERE expired >= 2022
+4. SELECT nama_pelanggan FROM `pelanggan` WHERE usia <= 20
+5. SELECT nama_pelanggan, alamat FROM `pelanggan` WHERE usia >= 24
+6. SELECT id_pelanggan, id_obat FROM `detail_orders` WHERE harga >= 'Rp5000'
+7. SELECT remaja FROM `petunjuk_pemakaian` WHERE dewasa = '3x3 sehari'
+8. SELECT 'anak-anak', remaja FROM `petunjuk_pemakaian` WHERE dewasa = '3x2 sehari'
+9. SELECT nama FROM `obat` WHERE stok >= 70
+10. SELECT nama, stok, id_petunjuk_pemakaian FROM `obat` WHERE expired >=2022
