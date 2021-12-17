@@ -1,0 +1,20 @@
+1. SELECT * FROM anggotas WHERE name LIKE 'Admin%';
+2. SELECT * FROM anggotas WHERE NOT name LIKE '%Admin%';
+3. SELECT anggotas.id, name FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id;
+4. SELECT anggotas.id, name, telp FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id;
+5. SELECT id, name, telp FROM anggotas WHERE id IN(SELECT * FROM (SELECT id_anggota FROM peminjaman GROUP BY id_anggota HAVING COUNT(id_anggota) > 1) AS a);
+6. SELECT name, telp, tgl_pinjam, tgl_kembali FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id;
+7. SELECT name, telp, tgl_pinjam, tgl_kembali FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id WHERE MONTH(tgl_kembali) = 06
+8. SELECT name, telp, tgl_pinjam, tgl_kembali FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id WHERE MONTH(tgl_pinjam) = 05
+9. SELECT name, telp, tgl_pinjam, tgl_kembali FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id WHERE MONTH(tgl_pinjam) AND MONTH(tgl_kembali) = 06
+10. SELECT name, telp, alamat, tgl_pinjam, tgl_kembali FROM anggotas LEFT JOIN peminjaman ON peminjaman.id_anggota = anggotas.id WHERE alamat LIKE '%Bandung%';
+11. SELECT name, telp, alamat, tgl_pinjam, tgl_kembali FROM peminjaman RIGHT JOIN anggotas ON peminjaman.id_anggota = anggotas.id WHERE alamat LIKE '%Bandung%' AND sex LIKE 'P';
+12. SELECT name, telp, alamat, tgl_pinjam, tgl_kembali, isbn, qty FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id JOIN detail_peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id JOIN bukus ON bukus.id = detail_peminjaman.id_buku WHERE qty > 1;
+13. SELECT name, telp, alamat, tgl_pinjam, tgl_kembali, isbn, qty, judul, harga_pinjam, harga_pinjam*qty as total_harga FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id JOIN detail_peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id JOIN bukus ON bukus.id = detail_peminjaman.id_buku;
+14. SELECT name, anggotas.telp, anggotas.alamat, tgl_pinjam, tgl_kembali, isbn, qty, judul, nama_penerbit, nama_pengarang, nama FROM anggotas JOIN peminjaman ON peminjaman.id_anggota = anggotas.id JOIN detail_peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id JOIN bukus ON bukus.id = detail_peminjaman.id_buku JOIN penerbits ON penerbits.id = bukus.id_penerbit JOIN pengarangs ON pengarangs.id = bukus.id_pengarang JOIN katalogs ON katalogs.id = bukus.id_katalog;
+15. SELECT katalogs.*, judul FROM katalogs JOIN bukus ON bukus.id_katalog = katalogs.id;
+16. SELECT bukus.*, nama_penerbit FROM bukus LEFT JOIN penerbits ON penerbits.id = bukus.id_penerbit;
+17. SELECT COUNT(id_pengarang) AS jumlah_pengarang FROM bukus WHERE id_pengarang = 5;
+18. SELECT * FROM bukus WHERE harga_pinjam > 10000;
+19. SELECT * FROM bukus JOIN penerbits ON penerbits.id = bukus.id_penerbit WHERE qty_stok > 10;
+20. SELECT * FROM anggotas WHERE MONTH(created_at) = 06;
