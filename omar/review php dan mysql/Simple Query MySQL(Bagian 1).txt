@@ -1,0 +1,11 @@
+Simple Query MySQL(Bagian 1)
+1. SELECT * FROM `stok_masuk`
+2. SELECT id_nama_produk, tanggal_stok_masuk, id_penanggung_jawab FROM `stok_masuk`
+3. SELECT id_nama_produk, tanggal_stok_masuk, stok_masuk FROM `stok_masuk`
+4. SELECT nama_produk, perusahaan_farmasi FROM `nama_produk`
+5. SELECT nama, jabatan FROM `karyawan`
+6. SELECT * FROM `stok_masuk` WHERE stok_masuk > 110
+7. SELECT * FROM `stok_masuk` WHERE stok_masuk <= 110
+8. SELECT * FROM `stok_masuk` WHERE tanggal_stok_masuk > '2021-12-02'
+9. SELECT * FROM `stok_masuk` WHERE id_nama_produk = 1
+10. SELECT * FROM `nama_produk` WHERE perusahaan_farmasi = 'PT. Obat Hebat'
