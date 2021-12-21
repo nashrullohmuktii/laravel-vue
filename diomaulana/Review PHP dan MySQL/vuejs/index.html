@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Component Vue JS </title>
+</head>
+<body>
+    <div id="myVue">
+        Counter: {{ counter }} <br>
+        <span v-if="seen">Now you see me</span>
+        <p>Makanan Dan Minuman Favorit  :</p>
+        <li v-for="todo in todos">
+            {{ todo.food }} dan {{todo.drink}}
+        </li>
+        <br>
+        <span v-html="isiHtml"></span>
+    </div>
+</body>
+</html>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Counter = {
+    data() {
+        return {
+            counter: 0,
+            seen: true,
+            todos: [
+                { 
+                    food: 'Nasi Goreng',
+                    drink: 'Es Teh manis' 
+                },
+                { 
+                    food: 'Mie Goreng',
+                    drink: 'Es Jeruk' 
+                },
+                { 
+                    food: 'Durian',
+                    drink: 'Es Pokat' 
+                }
+            ],
+            isiHtml: '<span style="color: green">Teks Ini Berwarna Hijau.</span>'
+        }
+    }
+    }
+
+    Vue.createApp(Counter).mount('#myVue')
+</script>
