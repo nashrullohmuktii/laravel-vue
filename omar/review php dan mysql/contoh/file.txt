@@ -1,6 +1,0 @@
-Update and Delete
-1. UPDATE `karyawan` SET `jabatan`='spv' WHERE id = 5
-2. UPDATE `nama_produk` SET `izin_bpom`='zb1313' WHERE id = 3
-3. UPDATE `nama_produk` SET `nama_produk`='Obat Pilek' WHERE id = 4
-4. DELETE FROM `nama_produk` WHERE id = 17
-5. DELETE FROM `karyawan` WHERE id = 5
