@@ -24,7 +24,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
    // output data
    while ($row = $result->fetch_assoc()) {
-       echo "Anggota : " . $row["name"]. " " . $row["telp"]. " " . $row["alamat"]. "<br>";
+       echo "Nama : " . $row["name"]. ", No.telp : " . $row["telp"]. ", Alamat: " . $row["alamat"]. "<br>";
    } 
 
 } else {
