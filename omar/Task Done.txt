@@ -1,0 +1,28 @@
+Task Done
+1. Git
+ a. Membuat repo
+ b. push/pull project
+ c. Git branch & merge
+ d. Clone repo dari mentor
+
+2. Review PHP dan MySQL
+ a. Tipe data MySQL, primary key, foreign key
+ b. Relasi database
+ c. Simple query mysql (bagian 1)
+ d. Simple query mysql (bagian 2)
+ e. Delete dan update
+ f. Join, right join dan left join
+ g. Join multiple table
+ h. Kuis Review MySQL
+ i. Connect database (connection.php)
+ j. Crud php 
+ k. Add Bootstrap (belum di push)
+
+3. Review Vue.js
+ a. Basic Component
+ b. Event Handling
+
+4. Framework Laravel x Vue.js
+ a. Introduction
+ b. Installation
+ c. Authentication
