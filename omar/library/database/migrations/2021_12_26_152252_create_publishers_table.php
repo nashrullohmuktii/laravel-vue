@@ -18,7 +18,7 @@ class CreatePublishersTable extends Migration
             $table->string('name', 64);
             $table->string('email', 64);
             $table->char('phone_number', 15);
-            $table->text('addres');
+            $table->text('address');
             $table->timestamps();
         });
     }
