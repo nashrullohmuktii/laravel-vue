@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\models\Catalog;
-use Faker\factory as Faker;
+use App\Models\Catalog;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class CatalogSeeder extends Seeder
@@ -18,7 +18,7 @@ class CatalogSeeder extends Seeder
         $faker = Faker::create();
 
         for($i=0; $i < 5; $i++){
-            $catalog = new Catelog;
+            $catalog = new Catalog;
 
             $catalog->name = $faker->name;
 
