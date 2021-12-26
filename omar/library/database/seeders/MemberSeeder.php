@@ -18,7 +18,7 @@ class MemberSeeder extends Seeder
         $faker = Faker::create();
 
         for($i=0; $i < 20; $i++){
-            $member = new Members;
+            $member = new Member;
 
             $member->name = $faker->name;
             $member->gender = rand(m,f);

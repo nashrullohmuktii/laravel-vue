@@ -18,7 +18,7 @@ class BookSeeder extends Seeder
         $faker = Faker::create();
 
         for($i=0; $i < 20 ; $i++){
-            $book = new Books;
+            $book = new Book;
 
             $book->isbn = $faker->randomNumber(9);
             $book->title = $faker->name;

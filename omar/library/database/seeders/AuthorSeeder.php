@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\models\Author;
-use Faker\factory as Faker;
+use App\Models\Author;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder; 
 
 class AuthorSeeder extends Seeder

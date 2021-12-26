@@ -18,7 +18,7 @@ class CatalogSeeder extends Seeder
         $faker = Faker::create();
 
         for($i=0; $i < 5; $i++){
-            $catalog = new Catelogs;
+            $catalog = new Catelog;
 
             $catalog->name = $faker->name;
 
