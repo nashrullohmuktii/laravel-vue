@@ -16,7 +16,7 @@ Task Done
  h. Kuis Review MySQL
  i. Connect database (connection.php)
  j. Crud php 
- k. Add Bootstrap (belum di push)
+ k. Add Bootstrap
 
 3. Review Vue.js
  a. Basic Component
@@ -26,3 +26,4 @@ Task Done
  a. Introduction
  b. Installation
  c. Authentication
+ d. 
