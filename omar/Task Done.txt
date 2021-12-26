@@ -26,4 +26,4 @@ Task Done
  a. Introduction
  b. Installation
  c. Authentication
- d. 
+ d. Templating
