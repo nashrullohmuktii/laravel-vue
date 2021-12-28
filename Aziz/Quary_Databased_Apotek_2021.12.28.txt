@@ -1,0 +1,14 @@
+QUARY DATABASED APOTEK
+
+Pertanyaan untuk data based apotek :
+1.	Siapa dokter yang paling muda di apotek ?
+2.	Siapa dokter yang paling tua di apotek ?
+3.	Obat apa yang kadaluarsannya mendekati akhir tahun ?
+4.	Obat apa yang tanggal pembuatannya paling cepat ?
+5.	Sebutkan mana dokter yang lahir pada tahun 1999 ?
+6.	Ada berapa dokter di apotek yang spesialis gigi, sebutkan ?
+7.	Ada berapa dokter spesialis di apotek ?
+8.	Berapa jumlah dokter spesialis jantung ?
+9.	Jenis resep apa yang sering di gunakan ?
+10.	Siapa dokter yang paling banyak menulis resep ?
+

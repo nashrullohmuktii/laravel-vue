@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2021 at 08:36 PM
+-- Generation Time: Dec 28, 2021 at 07:03 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -40,16 +40,16 @@ CREATE TABLE `tb_dokter` (
 --
 
 INSERT INTO `tb_dokter` (`id_dokter`, `nama_dokter`, `tanggal_lahir`, `no_telfon`, `spesialis`) VALUES
-(1, 'Aziz', '0000-00-00', '85647555528', 'gigi'),
-(3, 'Ani', '0000-00-00', '85647555528', 'jantung'),
-(4, 'Nisa', '0000-00-00', '85647555528', 'kulit'),
-(5, 'Dila', '0000-00-00', '85647555528', 'gigi'),
-(6, 'Nila', '0000-00-00', '85647555528', 'jantung'),
-(7, 'Ida', '0000-00-00', '85647555528', 'kulit'),
-(8, 'Idaa', '0000-00-00', '85647555528', 'gigi'),
-(9, 'anjar', '0000-00-00', '85647555528', 'jantung'),
-(10, 'anjas', '0000-00-00', '85647555528', 'kulit'),
-(11, 'lutfi', '0000-00-00', '85647555528', 'gigi');
+(1, 'Aziz', '1999-01-26', '85647555528', 'gigi'),
+(3, 'Ani', '1999-01-26', '85647555528', 'jantung'),
+(4, 'Nisa', '1990-01-27', '85647555528', 'kulit'),
+(5, 'Dila', '1988-01-28', '85647555528', 'gigi'),
+(6, 'Nila', '1989-01-25', '85647555528', 'jantung'),
+(7, 'Ida', '1999-01-26', '85647555528', 'kulit'),
+(8, 'Idaa', '1990-01-27', '85647555528', 'gigi'),
+(9, 'anjar', '1988-01-28', '85647555528', 'jantung'),
+(10, 'anjas', '1996-02-02', '85647555528', 'kulit'),
+(11, 'lutfi', '1995-02-03', '85647555528', 'gigi');
 
 -- --------------------------------------------------------
 
@@ -71,20 +71,20 @@ CREATE TABLE `tb_obat` (
 --
 
 INSERT INTO `tb_obat` (`id_obat`, `nama_obat`, `tanggal_pembuat`, `tanggal_kadaluarsa`, `jenis_obat`, `keterangan`) VALUES
-(1, 'vitamin A', '0000-00-00', '0000-00-00', 'vitamin', 'Manfaat vitamin A adalah menunjang pertumbuhan dan perkembangan sel. Vitamin yang larut dalam lemak ini juga meningkatkan kesehatan kulit, rambut, kuku, gusi, kelenjar, tulang, gigi, mencegah rabun senja sampai kanker paru. Makanan yang banyak mengandung vitamin A di antaranya ikan salmon, kuning telur, dan produk susu.'),
-(3, 'vitamin B1', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(4, 'vitamin B2', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(5, 'vitamin B3', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(6, 'vitamin B5', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(7, 'vitamin B6', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(8, 'vitamin B7', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(9, 'vitamin B9', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(10, 'vitamin B11', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(11, 'vitamin B12', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(12, 'vitamin D', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(13, 'vitamin E', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(14, 'vitamin K', '0000-00-00', '0000-00-00', 'vitamin', ''),
-(15, 'vitamin C', '0000-00-00', '0000-00-00', 'vitamin', '');
+(1, 'vitamin A', '2021-01-01', '2021-12-12', 'vitamin', 'Manfaat vitamin A adalah menunjang pertumbuhan dan perkembangan sel. Vitamin yang larut dalam lemak ini juga meningkatkan kesehatan kulit, rambut, kuku, gusi, kelenjar, tulang, gigi, mencegah rabun senja sampai kanker paru. Makanan yang banyak mengandung vitamin A di antaranya ikan salmon, kuning telur, dan produk susu.'),
+(3, 'vitamin B1', '2021-01-02', '2021-12-13', 'vitamin', ''),
+(4, 'vitamin B2', '2021-01-03', '2021-12-14', 'vitamin', ''),
+(5, 'vitamin B3', '2021-01-01', '2021-12-12', 'vitamin', ''),
+(6, 'vitamin B5', '2021-01-02', '2021-12-13', 'vitamin', ''),
+(7, 'vitamin B6', '2021-01-03', '2021-12-14', 'vitamin', ''),
+(8, 'vitamin B7', '2021-01-01', '2021-12-12', 'vitamin', ''),
+(9, 'vitamin B9', '2021-01-02', '2021-12-13', 'vitamin', ''),
+(10, 'vitamin B11', '2021-01-03', '2021-12-14', 'vitamin', ''),
+(11, 'vitamin B12', '2021-01-01', '2021-12-12', 'vitamin', ''),
+(12, 'vitamin D', '2021-01-02', '2021-12-13', 'vitamin', ''),
+(13, 'vitamin E', '2021-01-03', '2021-12-14', 'vitamin', ''),
+(14, 'vitamin K', '2021-01-01', '2021-12-12', 'vitamin', ''),
+(15, 'vitamin C', '2021-01-02', '2021-12-13', 'vitamin', '');
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,16 @@ CREATE TABLE `tb_resep` (
 --
 
 INSERT INTO `tb_resep` (`id_resep`, `nama`, `tanggal`, `jenis_resep`, `id_obat`, `id_dokter`) VALUES
-(1, 'parasetamol', '2021-12-21', 'penurun panas', 3, 10),
-(2, 'penurun panas', '2021-12-22', 'penurun panas', 1, 1);
+(3, 'penurun panas', '2021-12-21', 'vitamin C', 15, 11),
+(6, 'penambah napsu makan', '2021-12-22', 'Vitamin D', 12, 5),
+(7, 'antibody', '2021-12-23', 'Vitamin C', 15, 10),
+(8, 'kebugaran', '2021-12-21', 'vitamin B1', 3, 8),
+(9, 'untuk mata', '2021-12-22', 'vitamin A', 1, 11),
+(10, 'penurun panas', '2021-12-23', 'Vitamin C', 15, 4),
+(11, 'untuk mata', '2021-12-22', 'vitamin A', 1, 11),
+(12, 'antibody', '2021-12-23', 'Vitamin C', 15, 10),
+(13, 'kebugaran', '2021-12-21', 'vitamin B1', 3, 8),
+(14, 'penurun panas', '2021-12-21', 'vitamin C', 15, 11);
 
 --
 -- Indexes for dumped tables
@@ -142,19 +150,19 @@ ALTER TABLE `tb_resep`
 -- AUTO_INCREMENT for table `tb_dokter`
 --
 ALTER TABLE `tb_dokter`
-  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_obat`
 --
 ALTER TABLE `tb_obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_resep`
 --
 ALTER TABLE `tb_resep`
-  MODIFY `id_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
