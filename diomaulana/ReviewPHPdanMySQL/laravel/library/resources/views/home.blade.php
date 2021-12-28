@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+
+@section('header', 'Home')
+
 @section('content')
-    Success Login
+    Ini halaman home
 @endsection
