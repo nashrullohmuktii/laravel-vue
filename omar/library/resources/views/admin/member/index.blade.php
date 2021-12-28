@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('header')
-    Home
+    Member
 @endsection
 
 @section('content')
 <div class="container">
-    <p>Ini adalah halaman home</p>
+    <p>Ini adalah halaman Member</p>
 </div>
 @endsection
