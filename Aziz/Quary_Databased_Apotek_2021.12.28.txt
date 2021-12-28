@@ -13,6 +13,38 @@ SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%'
 SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%' AND spesialis = 'gigi'
 SELECT * FROM `tb_dokter` WHERE NOT tanggal_lahir LIKE '%1999%'
 SELECT spesialis, COUNT(*) FROM `tb_dokter` GROUP BY spesialis
+
+UPDATED & DELETE
 UPDATE `tb_dokter` SET `no_telfon`=0851234567890
 UPDATE `tb_dokter` SET `spesialis`= 'hati' WHERE nama_dokter = 'Aziz'
 DELETE FROM `tb_dokter` WHERE nama_dokter = 'anjar'
+
+
+JOIN TABLE
+SELECT nama, tb_resep.id_dokter, nama_dokter
+FROM `tb_resep` JOIN tb_dokter ON tb_resep.id_dokter=tb_dokter.id_dokter
+ORDER BY id_dokter ASC
+
+SELECT nama, tb_resep.id_dokter, nama_dokter, spesialis
+FROM `tb_resep` JOIN tb_dokter ON tb_resep.id_dokter=tb_dokter.id_dokter
+WHERE spesialis LIKE '%gigi%'
+ORDER BY nama_dokter ASC
+
+SELECT nama, tb_resep.id_obat, nama_obat, jenis_obat, COUNT(*)
+FROM `tb_resep`
+JOIN tb_obat ON tb_resep.id_obat=tb_obat.id_obat
+GROUP BY nama_obat
+ORDER BY nama_obat ASC
+
+SELECT nama, tb_resep.id_obat, nama_obat, jenis_obat, COUNT(*)
+FROM `tb_resep`
+RIGHT JOIN tb_obat ON tb_resep.id_obat=tb_obat.id_obat
+WHERE NOT nama LIKE '%NULL%'
+GROUP BY nama_obat
+ORDER BY nama_obat ASC
+
+SELECT nama, tb_resep.id_obat, nama_obat, jenis_obat, COUNT(*)
+FROM `tb_resep`
+LEFT JOIN tb_obat ON tb_resep.id_obat=tb_obat.id_obat
+GROUP BY nama_obat
+ORDER BY nama_obat ASC
