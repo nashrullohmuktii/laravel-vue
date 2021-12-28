@@ -13,7 +13,7 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         return view('admin.member.index');
     }
 

@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->date('date_end');
             $table->timestamps();
 
-            $table->foreign('member_id')->references('member_id')->on('users');
+            $table->foreign('member_id')->references('id')->on('members');
         });
     }
 

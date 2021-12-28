@@ -188,6 +188,14 @@
                       </p>                    
                   </a>
               </li>
+              <li class="nav-item">
+                  <a href="{{ url('member') }}" class="nav-link {{request()->is('member') ? 'active' : ''}}">
+                      <i class="nav-icon fas fa-dollar-sign"></i>
+                      <p>
+                        Transaction
+                      </p>                    
+                  </a>
+              </li>
           </ul>
       </nav>
       <!-- /.sidebar-menu -->
