@@ -13,3 +13,6 @@ SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%'
 SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%' AND spesialis = 'gigi'
 SELECT * FROM `tb_dokter` WHERE NOT tanggal_lahir LIKE '%1999%'
 SELECT spesialis, COUNT(*) FROM `tb_dokter` GROUP BY spesialis
+UPDATE `tb_dokter` SET `no_telfon`=0851234567890
+UPDATE `tb_dokter` SET `spesialis`= 'hati' WHERE nama_dokter = 'Aziz'
+DELETE FROM `tb_dokter` WHERE nama_dokter = 'anjar'
