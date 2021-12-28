@@ -1,14 +1,15 @@
-QUARY DATABASED APOTEK
-
-Pertanyaan untuk data based apotek :
-1.	Siapa dokter yang paling muda di apotek ?
-2.	Siapa dokter yang paling tua di apotek ?
-3.	Obat apa yang kadaluarsannya mendekati akhir tahun ?
-4.	Obat apa yang tanggal pembuatannya paling cepat ?
-5.	Sebutkan mana dokter yang lahir pada tahun 1999 ?
-6.	Ada berapa dokter di apotek yang spesialis gigi, sebutkan ?
-7.	Ada berapa dokter spesialis di apotek ?
-8.	Berapa jumlah dokter spesialis jantung ?
-9.	Jenis resep apa yang sering di gunakan ?
-10.	Siapa dokter yang paling banyak menulis resep ?
-
+SELECT * FROM `tb_dokter`
+SELECT COUNT(*) FROM tb_dokter
+SELECT nama_dokter, tanggal_lahir FROM `tb_dokter`
+SELECT * FROM `tb_dokter` ORDER BY `tb_dokter`.`tanggal_lahir` DESC
+SELECT * FROM `tb_dokter` ORDER BY `tb_dokter`.`tanggal_lahir` ASC
+SELECT * FROM `tb_dokter` WHERE spesialis = 'gigi'
+SELECT nama_dokter,spesialis FROM `tb_dokter` WHERE spesialis = 'jantung'
+SELECT DISTINCT tanggal_lahir FROM tb_dokter
+SELECT tanggal_lahir AS tanggal FROM `tb_dokter`
+SELECT tanggal_kadaluarsa-tanggal_pembuat FROM `tb_obat`
+SELECT * FROM `tb_dokter` WHERE tanggal_lahir = '1999-01-26'
+SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%'
+SELECT * FROM `tb_dokter` WHERE tanggal_lahir LIKE '%1999%' AND spesialis = 'gigi'
+SELECT * FROM `tb_dokter` WHERE NOT tanggal_lahir LIKE '%1999%'
+SELECT spesialis, COUNT(*) FROM `tb_dokter` GROUP BY spesialis
