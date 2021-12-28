@@ -27,3 +27,5 @@ Task Done
  b. Installation
  c. Authentication
  d. Templating
+ e. Migration and Model
+ f. DB Seed
