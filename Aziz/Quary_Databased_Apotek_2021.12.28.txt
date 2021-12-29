@@ -48,3 +48,12 @@ FROM `tb_resep`
 LEFT JOIN tb_obat ON tb_resep.id_obat=tb_obat.id_obat
 GROUP BY nama_obat
 ORDER BY nama_obat ASC
+
+JOIN MULTITABLE TABLE
+SELECT nama_pasien,tb_pasien.tanggal_lahir, alamat, nama, nama_obat, jenis_obat, tb_dokter.nama_dokter
+FROM `tb_resep`
+JOIN tb_obat ON tb_resep.id_obat=tb_obat.id_obat
+JOIN tb_dokter ON tb_resep.id_dokter=tb_dokter.id_dokter
+JOIN tb_pasien ON tb_resep.id_pasien=tb_pasien.id_pasien
+GROUP BY nama_pasien
+ORDER BY nama_pasien ASC
