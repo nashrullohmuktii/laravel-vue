@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-
+@section('title-web', 'Catalog')
 @section('header', 'Catalog')
 
-@section('content')
+@section('content') 
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Bordered Table</h3>
+                    <a href="{{ url('catalogs/create')  }}" class="btn btn-primary">Create Catalog</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -19,6 +19,7 @@
                         <th>Name</th>
                         <th>Total Books</th>
                         <th>Created At</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,15 @@
                             <td>{{ $catalog->name }}</td>
                             <td>{{ count($catalog->books) }}</td>
                             <td>{{ date('d M Y, H:i:s', strtotime($catalog->created_at)) }}</td>
+                            <td>
+                                <a href="{{ url('catalogs/'.$catalog->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ url('catalogs', ['id' => $catalog->id]) }}" method="post">
+                                    <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure ?')">
+                                    @csrf
+                                    @method('delete')
+
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
