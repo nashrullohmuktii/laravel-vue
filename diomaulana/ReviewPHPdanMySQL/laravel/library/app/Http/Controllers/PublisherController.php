@@ -17,7 +17,7 @@ class PublisherController extends Controller
 
         $publishers = Publisher::all();
         
-        return view('admin.publisher.index', compact('publishers'));
+        return view('publihser', compact('publishers'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        // return view('admin.publisher.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class PublisherController extends Controller
         $this->validate($request,[
                 'name' => ['required'],
                 'email' => ['email:rfc,dns', 'required'],
-                'phone_number' => ['required'],
+                'phone_number' => ['required','max:13','min:10'],
                 'address' => ['required'],
         ]);
 
@@ -70,7 +70,7 @@ class PublisherController extends Controller
     public function edit(Publisher $publisher)
     {
 
-        return view('admin.publisher.edit', compact('publisher'));
+        // return view('admin.publisher.edit', compact('publisher'));
     }
 
     /**
@@ -85,7 +85,7 @@ class PublisherController extends Controller
         $this->validate($request,[
                 'name' => ['required'],
                 'email' => ['email:rfc,dns', 'required'],
-                'phone_number' => ['required'],
+                'phone_number' => ['required','max:13','min:10'],
                 'address' => ['required'],
         ]);
 

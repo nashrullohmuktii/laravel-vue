@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index']);
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 
 Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
@@ -32,6 +31,7 @@ Route::get('/transaction-details', [App\Http\Controllers\TransactionDetailContro
 Route::resources([
 	"catalogs" => App\Http\Controllers\CatalogController::class,
     'publishers' => App\Http\Controllers\PublisherController::class,
+    'authors' => App\Http\Controllers\AuthorController::class,
 ]);
 
 // Route::get('/catalogs', [App\Http\Controllers\CatalogController::class, 'index']);
