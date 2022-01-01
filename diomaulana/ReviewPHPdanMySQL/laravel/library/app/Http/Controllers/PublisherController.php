@@ -17,7 +17,7 @@ class PublisherController extends Controller
 
         $publishers = Publisher::all();
         
-        return view('publihser', compact('publishers'));
+        return view('publisher', compact('publishers'));
     }
 
     /**

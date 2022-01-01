@@ -87,7 +87,7 @@ class AuthorController extends Controller
         $this->validate($request,[
                 'name' => ['required'],
                 'email' => ['required','email:rfc,dns'],
-                'phone_number' => ['required','max:13','min:10','integer'],
+                'phone_number' => ['required','max:13','min:10'],
                 'address' => ['required']
         ]);
         $author->update($request->all());

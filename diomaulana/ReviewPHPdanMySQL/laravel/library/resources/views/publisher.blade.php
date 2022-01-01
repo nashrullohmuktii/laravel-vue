@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('css')
-
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection 
 
 @section('title-web', 'Publisher')
@@ -15,21 +18,11 @@
                 <div class="card-header">
                 <button @click="addData()" class="btn btn-primary">Create New Publisher</button>
 
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    </div>
-                </div>
+                
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+                <div class="card-body table-responsive p-10">
+                <table id="datatable" class="table table-hover text-nowrap">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -110,42 +103,63 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-        var controller = new Vue({
-            el: '#controller',
-            data: {
-                data: {},
-                actionUrl : '{{ url('publishers') }}',
-                editStatus : false
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script>
+  $(function () {
+    $("#datatable").DataTable({
+    })
+  });
+</script>
 
-            }, 
-            mounted: function(){
+<!-- vue js -->
+<script type="text/javascript">
+    var controller = new Vue({
+        el: '#controller',
+        data: {
+            data: {},
+            actionUrl : '{{ url('publishers') }}',
+            editStatus : false
 
+        }, 
+        mounted: function(){
+
+        },
+        methods: {
+            addData(){
+                this.data = {};
+                this.actionUrl = '{{ url('publishers') }}';
+                this.editStatus = false;
+                $('#modal-default').modal();
             },
-            methods: {
-                addData(){
-                    this.data = {};
-                    this.actionUrl = '{{ url('publishers') }}';
-                    this.editStatus = false;
-                    $('#modal-default').modal();
-                },
-                editData(data){
-                    
-                    this.data = data;
-                    this.actionUrl = '{{ url('publishers') }}'+'/'+ data.id;
-                    this.editStatus = true;
-                    $('#modal-default').modal();
-                },
-                deleteData(id){
-                    this.actionUrl = '{{ url('publishers') }}'+'/'+ id;
-                    if(confirm('Are you sure ?')){
-                        axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {
-                            location.reload();
-                        });
-                    }
+            editData(data){
+                
+                this.data = data;
+                this.actionUrl = '{{ url('publishers') }}'+'/'+ data.id;
+                this.editStatus = true;
+                $('#modal-default').modal();
+            },
+            deleteData(id){
+                this.actionUrl = '{{ url('publishers') }}'+'/'+ id;
+                if(confirm('Are you sure ?')){
+                    axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {
+                        location.reload();
+                    });
                 }
             }
-        });
+        }
+    });
 
-    </script>
+</script>
 @endsection 
