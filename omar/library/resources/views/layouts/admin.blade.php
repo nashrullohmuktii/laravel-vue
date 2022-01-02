@@ -149,7 +149,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('catalog') }}" class="nav-link {{request()->is('catalog') ? 'active' : ''}}">
+                  <a href="{{ url('catalogs') }}" class="nav-link {{request()->is('catalogs') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-table"></i>
                       <p>
                         Catalog
@@ -157,7 +157,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('publisher') }}" class="nav-link {{request()->is('publisher') ? 'active' : ''}}">
+                  <a href="{{ url('publishers') }}" class="nav-link {{request()->is('publishers') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-print"></i>
                       <p>
                         Publisher
@@ -165,7 +165,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('author') }}" class="nav-link {{request()->is('author') ? 'active' : ''}}">
+                  <a href="{{ url('authors') }}" class="nav-link {{request()->is('authors') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-feather-alt"></i>
                       <p>
                         Author
@@ -173,7 +173,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('book') }}" class="nav-link {{request()->is('book') ? 'active' : ''}}">
+                  <a href="{{ url('books') }}" class="nav-link {{request()->is('books') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                         Book
@@ -181,7 +181,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('member') }}" class="nav-link {{request()->is('member') ? 'active' : ''}}">
+                  <a href="{{ url('members') }}" class="nav-link {{request()->is('members') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-users"></i>
                       <p>
                         Member
@@ -189,7 +189,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ url('member') }}" class="nav-link {{request()->is('member') ? 'active' : ''}}">
+                  <a href="{{ url('transactions') }}" class="nav-link {{request()->is('transactions') ? 'active' : ''}}">
                       <i class="nav-icon fas fa-dollar-sign"></i>
                       <p>
                         Transaction
@@ -229,11 +229,8 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2021 <a href="{{ url('home') }}">Library</a>.</strong>
     All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
   </footer>
 
   <!-- Control Sidebar -->
