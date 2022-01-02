@@ -146,7 +146,59 @@ class HomeController extends Controller
                 ->whereMonth('created_at', 6)
                 ->get();
 
-        return $no20;
-        return view('home');
+        // return $no20;
+
+        $total_member = Member::count();
+        $total_book = Book::count();
+        $total_transaction = Transaction::count();
+        $total_publisher = Publisher::count();
+
+        $data_donut = Book::select(Book::raw("count(publisher_id) as total"))
+                ->groupBy('publisher_id')
+                ->orderBy('publisher_id', 'asc')
+                ->pluck('total');
+
+        $label_donut = Publisher::orderBy('publishers.id', 'asc')
+                ->join('books', 'books.publisher_id', 'publishers.id')
+                ->groupBy('publishers.id')
+                ->pluck('publishers.name');
+
+        $label_bar = ['Borrowing', 'Return'];
+        $data_bar = [];
+
+        foreach($label_bar as $key => $value){
+                $data_bar[$key]['label'] = $label_bar[$key];
+                $data_bar[$key]['backgroundColor'] = $key == 0 ? 'rgba(60,141,188,0.9)' : 'rgba(210, 214, 222, 1) ';
+                $data_month = [];
+
+                foreach(range(1,12) as $month) {
+                        if($key == 0 ){
+                        $data_month[] = Transaction::select(Transaction::raw("count(*) as total"))
+                                ->whereMonth('date_start', $month)
+                                ->first()->total;
+                        } else {
+                        $data_month[] = Transaction::select(Transaction::raw("count(*) as total"))
+                                ->whereMonth('date_end', $month)
+                                ->first()->total;       
+                        }
+                        
+                }
+                $data_bar[$key]['data'] = $data_month;
+        }
+
+        $labels_area = Book::select('title')
+                ->orderBy('id', 'asc')
+                ->pluck('title');
+
+        
+        $data_price = Book::select('price')
+                ->orderBy('id', 'asc')
+                ->pluck('price');
+        $data_qty = Book::select('qty')
+                ->orderBy('id', 'asc')
+                ->pluck('qty');
+        
+
+        return view('home', compact('total_member', 'total_book', 'total_transaction', 'total_publisher' , 'label_donut', 'data_donut', 'data_bar', 'labels_area', 'data_price', 'data_qty' ));
     }
 }
