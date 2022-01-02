@@ -22,8 +22,12 @@ class PublisherController extends Controller
 
     public function api()
     {
-        $publisher = Publisher::all();
-        $datatables = datatables()->of($publisher)->addIndexColumn();
+        $publishers = Publisher::all();
+        foreach($publishers as $key => $publisher){
+            $publisher->date = format_date($publisher->created_at);
+
+        }
+        $datatables = datatables()->of($publishers)->addIndexColumn();
 
         return $datatables->make(true);
     }

@@ -20,12 +20,16 @@ class BookController extends Controller
         $publishers = Publisher::all();
         $authors = Author::all();
         $catalogs = Catalog::all();
+        
+
         return view('admin.book', compact('publishers', 'authors', 'catalogs'));
     }
     public function api()
     {
         $books = Book::all();
-
+        foreach ($books as $key => $book ){
+            $book->date = format_date($book->created_at);
+        }
         return json_encode($books);
     }
     /**

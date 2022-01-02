@@ -31,6 +31,7 @@
             <div class="info-box">
                 <div class="info-box-content" v-on:click="editData(book)">
                     <span class="info-box-text h4">@{{ book.title }} (@{{ book.qty }})</span>
+                    <p>@{{ book.date }}</p>
                     <span class="info-box-number">Rp @{{ formatNumberRupiah(book.price) }}<small>,-</small></span>
                 </div>
             </div>

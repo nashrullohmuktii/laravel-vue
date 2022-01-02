@@ -28,7 +28,7 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $catalog->name }}</td>
                             <td>{{ count($catalog->books) }}</td>
-                            <td>{{ date('d M Y, H:i:s', strtotime($catalog->created_at)) }}</td>
+                            <td>{{ format_date($catalog->created_at) }}</td>
                             <td>
                                 <a href="{{ url('catalogs/'.$catalog->id.'/edit') }}" class="btn btn-warning">Edit</a>
                                 <form action="{{ url('catalogs', ['id' => $catalog->id]) }}" method="post">
