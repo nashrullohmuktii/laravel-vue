@@ -63,8 +63,8 @@
                     <div class="form-group">
                             <label>Gender</label>
                             <select class="form-control" name='gender'>
-                                <option value="0">Perempuan</option>
-                                <option value="1">Laki -Laki</option>
+                                <option :selected="data.gender == 0" value="0">Perempuan</option>
+                                <option :selected="data.gender == 1" value="1">Laki -Laki</option>
                             </select>
                     </div>
                     <div class="form-group">
