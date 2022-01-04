@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Catalog</h3>
+          <a href="{{ url('catalogs/create')}}" class="btn btn-sm btn-primary pull-right">Add New Catalog</a>
 
           {{-- <div class="card-tools">
             <ul class="pagination pagination-sm float-right">
@@ -21,14 +21,15 @@
           </div> --}}
         </div>
         <!-- /.card-header -->
-        <div class="card-body p-0">
+        <div class="card-body p-0 mt-2 mb-2 mr-3">
           <table class="table table-bordered mr-2 ml-2">
             <thead>
               <tr class="text-center">
                 <th style="width: 10px">No</th>
-                <th>Name</th>
+                <th>Catalog</th>
                 <th>Total Books</th>
                 <th>Created At</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +39,19 @@
                 <td>{{ $catalog->name }}</td>
                 <td class="text-center">{{ count($catalog->books) }}</td>
                 <td class="text-center">{{ date('H:i:s - d M Y', strtotime($catalog->created_at))}}</td>
+                <td class="text-center">
+                  <div class="justify-content-center">
+                     {{-- edit --}}
+                    <a href="{{ url('catalogs/'.$catalog->id.'/edit') }}" class="btn btn-warning btn-sm mb-1">Edit</a>
+                    <br>
+                    {{-- delete --}}
+                    <form action="{{ url('catalogs', ['id' => $catalog->id]) }}" method="post">
+                    <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are You Sure?')">
+                    @method('delete')
+                    @csrf
+                  </form>
+                  </div>                 
+                </td>
               </tr>
               @endforeach
             </tbody>
