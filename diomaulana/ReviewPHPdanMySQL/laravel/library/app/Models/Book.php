@@ -9,7 +9,7 @@ class Book extends Model
 {
     use HasFactory;
     protected $fillable = ['isbn', 'title', 'year', 'publisher_id', 'author_id', 'catalog_id', 'qty', 'price'];
-    public function puiblisher ()
+    public function publisher ()
     {
         return $this->belongsTo('App\Models\Publisher', 'publisher_id'); 
     }
@@ -20,5 +20,10 @@ class Book extends Model
     public function catalog ()
     {
         return $this->belongsTo('App\Models\Catalog', 'catalog_id'); 
+    }
+
+    public function transactionDetails ()
+    {
+        return $this->hasMany('App\Models\TransactionDetail', 'book_id'); 
     }
 }

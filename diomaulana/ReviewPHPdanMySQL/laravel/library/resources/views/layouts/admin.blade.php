@@ -66,6 +66,22 @@
           </form>
         </div>
       </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">{{ countNotif() }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">{{ countNotif() }} Notifications</span>
+          <div class="dropdown-divider"></div>
+          @foreach(notifMessage() as $notifMessage)
+          <a href="{{ url('transactions') }}" class="dropdown-item">
+             {{ $notifMessage->name }} {{ $notifMessage->diffDay }} Days Late
+          </a>
+          @endforeach
+        </div>
+      </li>
       <li class="nav-item">
         <a class="dropdown-item" href="{{ route('logout') }}"
         onclick="event.preventDefault();
@@ -262,8 +278,7 @@
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('assets/dist/js/demo.js')}}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @yield('js')
