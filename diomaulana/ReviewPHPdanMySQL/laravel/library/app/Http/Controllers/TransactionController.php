@@ -7,9 +7,12 @@ use App\Models\TransactionDetail;
 use App\Models\Book;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class TransactionController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,12 +20,18 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->can('Dashboard')){
+            return view('admin.transaction.index');
+        } else {
+            return abort('403');
+        }
         
-        return view('admin.transaction.index');
+        
     }
 
     public function api(Request $request)
     {
+        if(auth()->user()->can('Dashboard')){
         // return notifMessage();
         if($request->gender && $request->date){
             
@@ -83,6 +92,9 @@ class TransactionController extends Controller
         $datatables = datatables()->of($transactions)->addIndexColumn();
 
         return $datatables->make(true);
+        } else {
+            return abort('403');
+        }
     }
 
     /**
@@ -92,11 +104,15 @@ class TransactionController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->can('Dashboard')){
         $members = Member::all();
         $books = Book::select('title', 'id')
             ->where('qty', '>', 0)
             ->get();
         return view('admin.transaction.create', compact('members', 'books'));
+        } else {
+            return abort('403');
+        }
     }
 
     /**
@@ -107,6 +123,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->can('Dashboard')){
         // return $request;
         $this->validate($request,[
                 'member_id' => ['required'],
@@ -144,6 +161,9 @@ class TransactionController extends Controller
          
 
         return redirect('transactions');
+        } else {
+            return abort('403');
+        }
     }
 
     /**
@@ -154,6 +174,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
+        if(auth()->user()->can('Dashboard')){
         // return $transaction;
         $member = Member::select('name')
                 ->where('id', $transaction->member_id)
@@ -172,6 +193,9 @@ class TransactionController extends Controller
             
         }
         return view('admin.transaction.show', compact('transaction', 'transactionDetails', 'member'));
+        } else {
+            return abort('403');
+        }
     }
 
     
@@ -184,6 +208,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
+        if(auth()->user()->can('Dashboard')){
         // return $transaction;
         $members = Member::all();
         $member = Member::select('name')
@@ -194,6 +219,9 @@ class TransactionController extends Controller
             ->where('transaction_id', $transaction->id)
             ->get();
         return view('admin/transaction/edit', compact('transaction', 'member', 'members', 'books', 'transactionDetails'));
+        } else {
+            return abort('403');
+        }
     }
 
     /**
@@ -205,7 +233,7 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        
+        if(auth()->user()->can('Dashboard')){
         $this->validate($request,[
                 'member_id' => ['required'],
                 'date_start' => ['required'],
@@ -237,6 +265,9 @@ class TransactionController extends Controller
         }
 
         return redirect('transactions');
+        } else {
+            return abort('403');
+        }
     }
 
     /**
@@ -247,6 +278,7 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
+        if(auth()->user()->can('Dashboard')){
         $transactionDetailDb = new TransactionDetail;
         
         $deleteTransaction = $transactionDetailDb
@@ -255,5 +287,10 @@ class TransactionController extends Controller
         if($deleteTransaction){
             $transaction->delete();
         }
+        } else{
+            
+        }
     }
+
+    
 }

@@ -196,6 +196,7 @@
             </a>
             
           </li>
+          @role('webadmin')
           <li class="nav-item">
             <a href="{{ url('transactions') }}" class="nav-link {{ request()->is('transactions') ? 'active' : '' }} ">
               <i class="nav-icon fas fa-shopping-cart"></i>
@@ -206,6 +207,7 @@
             </a>
             
           </li>
+          @endrole
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

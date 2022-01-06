@@ -21,6 +21,7 @@
                             <a href="{{ url('transactions/create') }}" type="button" class="btn btn-primary">Create New Transaction</a>
                         </div>
                         <div class="col-md-2">
+                            <label>Gender</label>
                             <select class="form-control" name="gender">
                                 <option value="0">All Gender</option>
                                 <option value="2">Female</option>
@@ -29,6 +30,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
+                                <label>Date Start</label>
                                     <input type="date" name="date_start" id="date_start" class="form-control">
                             </div>
                         </div>

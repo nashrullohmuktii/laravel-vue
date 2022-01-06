@@ -10,6 +10,8 @@ use App\Models\Author;
 use App\Models\Catalog;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -200,5 +202,32 @@ class HomeController extends Controller
         
 
         return view('home', compact('total_member', 'total_book', 'total_transaction', 'total_publisher' , 'label_donut', 'data_donut', 'data_bar', 'labels_area', 'data_price', 'data_qty' ));
+    }
+
+    public function test_spatie()
+    {
+        // $role = Role::create(['name' => 'webadmin']);
+        // $permission = Permission::create(['name' => 'Dashboard']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        // $user = auth()->user();
+        // $user->assignRole('webadmin');
+        // return $user;
+
+        // $user = User::where('id', 2)->first();
+        // $user->assignRole('webadmin');
+        // return $user;
+
+        // $user = User::with('roles')->get();
+        // return $user;
+
+        // $user = auth()->user();
+        // $user->removeRole('webadmin');
+
+        // $user = User::where('id', 2)->first();
+        // $user->removeRole('webadmin');
+        // return $user;
     }
 }

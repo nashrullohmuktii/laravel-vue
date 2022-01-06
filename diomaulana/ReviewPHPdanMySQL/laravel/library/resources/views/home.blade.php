@@ -5,6 +5,7 @@
 
 @section('content')
     <div class="row">
+        @role('webadmin')
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
@@ -64,6 +65,7 @@
                 <a href="{{ url('publishers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        @endrole
           <!-- ./col -->
         <div class="row">
             <div class="col-md-6">
