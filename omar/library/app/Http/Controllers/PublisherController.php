@@ -16,7 +16,7 @@ class PublisherController extends Controller
     {
         $publishers = Publisher::with('books')->get();
         
-        return view('admin.publisher.index', compact('publishers'));
+        return view('admin.publisher', compact('publishers'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        // return view('admin.publisher');
     }
 
     /**
@@ -68,7 +68,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        return view('admin.publisher.edit', compact('publisher'));
+        // return view('admin.publisher.edit', compact('publisher'));
     }
 
     /**
@@ -82,7 +82,7 @@ class PublisherController extends Controller
     {
         $this->validate($request,[
             'name' => ['required'],
-            'email' => ['required', 'unique:publishers'],
+            'email' => ['required'],
             'phone_number' => ['required', 'min:8', 'max:15'],
             'address' => ['required']
         ]);
@@ -102,6 +102,6 @@ class PublisherController extends Controller
     {
         $publisher->delete();
 
-        return redirect('publishers');
+        // return redirect('publishers');
     }
 }

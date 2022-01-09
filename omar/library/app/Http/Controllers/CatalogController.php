@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
+    public function _contruct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

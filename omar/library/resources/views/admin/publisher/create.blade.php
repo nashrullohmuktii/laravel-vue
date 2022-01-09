@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="integer" name="phone_number" class="form-control" placeholder="Enter Phone Number" required="">
+              <input type="text" name="phone_number" class="form-control" placeholder="Enter Phone Number" required="">
             </div>
             <div class="form-group">
               <label>Address</label>
