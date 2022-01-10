@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 04:42 PM
+-- Generation Time: Jan 10, 2022 at 09:39 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -170,7 +170,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `name`, `gender`, `phone_number`, `address`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'Morris Metz', 'L', '08226159346', '60179 Pouros Ranch\nNorth Rebecca, NV 93950', 'leola64@hotmail.com', '2021-12-28 08:40:58', '2021-12-28 08:40:58'),
+(1, 'Fahri Gunawan', 'L', '082282900023', '60179 Pouros Ranch\nNorth Rebecca, NV 93950', 'fahri23@gmail.com', '2021-12-28 08:40:58', '2021-12-28 08:40:58'),
 (2, 'Prof. Ayla Cummings', 'L', '082270050113', '569 Margie Viaduct Suite 832\nKleinside, CT 75681', 'dario56@gmail.com', '2021-12-28 08:40:58', '2021-12-28 08:40:58'),
 (3, 'Lula Bogan MD', 'L', '082249156462', '357 Heidenreich Stravenue Suite 354\nLake Ressiemouth, ME 19282', 'uhintz@hotmail.com', '2021-12-28 08:40:58', '2021-12-28 08:40:58'),
 (4, 'Prof. Thalia Greenfelder', 'P', '082256614020', '7480 Hassie Fields\nEast Martinebury, SC 88957-4813', 'joshua.moore@hotmail.com', '2021-12-28 08:40:58', '2021-12-28 08:40:58'),
@@ -341,6 +341,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `member_id`, `created_at`, `updated_at`) VALUES
+(1, 'Fahri Gunawan', 'fahri23@gmail.com', NULL, '$2y$10$DwrPaUzs/H1DDqnpN0shou.iLax1sS0echLC87miCakPW1jf2wfre', NULL, 1, '2022-01-02 09:38:05', '2022-01-02 09:38:05');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -495,7 +502,7 @@ ALTER TABLE `transaction_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

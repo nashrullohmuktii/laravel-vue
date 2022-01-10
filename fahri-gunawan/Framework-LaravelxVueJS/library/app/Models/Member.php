@@ -9,8 +9,13 @@ class Member extends Model
 {
     use HasFactory;
 
-    // public function user()
-    // {
-    //     return $this->hasOne('App\Models\User', 'member_id');
-    // }
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'member_id');
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne('App\Models\Transaction', 'member_id');
+    }
 }
