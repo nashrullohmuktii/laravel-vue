@@ -63,7 +63,7 @@ class MemberController extends Controller
         $member->address = $request->address;
         $member->phone_number = filter_phone($request->phone_number);
         $member->email = $request->email;
-        
+        $member->save();
     }
 
     /**
