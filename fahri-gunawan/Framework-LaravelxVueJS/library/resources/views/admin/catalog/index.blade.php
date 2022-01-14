@@ -25,32 +25,21 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Create At</th>
-                <th>Update At</th>
+                <th>No.</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Total Books</th>
+                <th class="text-center">Create At</th>
               </tr>
             </thead>
             <tbody>
+              @foreach ($catalogs as $key => $catalog)
               <tr>
-                <td>Autumn Altenwerth</td>
-                <td>2021-12-28 15:20:15</td>
-                <td>2021-12-28 15:20:15</td>
+                <td>{{ $key+1  }}</td>
+                <td class="text-center">{{ $catalog->name }}</td>
+                <td class="text-center">{{ count($catalog->books) }}</td>
+                <td class="text-center">{{ date('d/m/Y', strtotime($catalog->created_at)) }}</td>
               </tr>
-              <tr>
-                <td>Ara Hoeger</td>
-                <td>2021-12-28 15:20:15</td>
-                <td>2021-12-28 15:20:15</td>
-              </tr>
-              <tr>
-                <td>Kayley Renner</td>
-                <td>2021-12-28 15:20:15</td>
-                <td>2021-12-28 15:20:15</td>
-              </tr>
-              <tr>
-                <td>Aurelie VonRueden</td>
-                <td>2021-12-28 15:20:15</td>
-                <td>2021-12-28 15:20:15</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
