@@ -11,7 +11,10 @@
 ?>
  
 <body>
-	<a href="katalog.php">Go to Katalog</a>
+	<div style="text-align: center;">
+	<h1>Add Katalog</h1>
+	</div>
+	<a href="katalog.php">Back</a>
 	<br/><br/>
  
 	<form action="add_katalog.php" method="post" name="form1">

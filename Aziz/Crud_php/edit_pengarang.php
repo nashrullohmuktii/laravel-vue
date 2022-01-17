@@ -20,6 +20,9 @@
 ?>
  
 <body>
+	<div style="text-align: center;">
+	<h1>Edit Pengarang</h1>
+	</div>
 	<a href="pengarang.php">Go to Pengarang</a>
 	<br/><br/>
  

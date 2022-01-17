@@ -11,6 +11,9 @@
 ?>
  
 <body>
+	<div style="text-align: center;">
+	<h1>Add Penerbit</h1>
+	</div>
 	<a href="penerbit.php">Go to Penerbit</a>
 	<br/><br/>
  

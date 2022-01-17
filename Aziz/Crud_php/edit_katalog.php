@@ -17,6 +17,9 @@
 ?>
  
 <body>
+	<div style="text-align: center;">
+	<h1>Edit Katalog</h1>
+	</div>
 	<a href="katalog.php">Go to Katalog</a>
 	<br/><br/>
  

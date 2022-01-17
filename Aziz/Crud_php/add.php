@@ -11,13 +11,16 @@
 ?>
  
 <body>
+	<div style="text-align: center;">
+	<h1>Add Buku</h1>
+	</div>
 	<a href="index.php">Go to Buku</a>
 	<br/><br/>
  
 	<form action="add.php" method="post" name="form1">
 		<table width="25%" border="0">
 			<tr> 
-				<td>ISBN</td>
+				<td style="text-align:center">ISBN</td>
 				<td><input type="text" name="isbn"></td>
 			</tr>
 			<tr> 

@@ -26,6 +26,9 @@
 ?>
  
 <body>
+	<div style="text-align: center;">
+	<h1>Edit Buku</h1>
+	</div>
 	<a href="index.php">Go to Buku</a>
 	<br/><br/>
  

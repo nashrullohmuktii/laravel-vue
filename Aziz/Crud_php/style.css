@@ -1,0 +1,22 @@
+.link{
+    color:red;	
+	font-style: italic
+    font-size: 40pt;
+    font-weight: bold;
+}
+.add{
+    color:blue;	
+	font-style: italic
+    font-size: 20pt;
+    font-weight: bold;
+}
+.table{
+    font-family: sans-serif;
+    color: #444;
+    border-collapse: collapse;
+    width: 80%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px 20px;
+    border-width: 1px;
+}
