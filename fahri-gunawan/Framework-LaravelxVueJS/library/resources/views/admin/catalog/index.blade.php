@@ -6,7 +6,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Catalog Table</h3>
+          <a href="{{ url('catalogs/create') }}" class="btn btn-sm btn-primary pull-right">Buat Catalog Baru</a>
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
@@ -29,6 +29,7 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Total Books</th>
                 <th class="text-center">Create At</th>
+                <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +39,13 @@
                 <td class="text-center">{{ $catalog->name }}</td>
                 <td class="text-center">{{ count($catalog->books) }}</td>
                 <td class="text-center">{{ date('d/m/Y', strtotime($catalog->created_at)) }}</td>
+                <td class="text-center"><a href="{{ url('catalogs/'.$catalog->id.'/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                  <form action="{{ url('catalogs', ['id' => $catalog->id]) }}" method="post">
+                    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Yakin hapus data?')">
+                    @method('delete')
+                    @csrf
+                  </form>
+                </td>
               </tr>
               @endforeach
             </tbody>
