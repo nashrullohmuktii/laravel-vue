@@ -32,6 +32,62 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Data Home       
+        $total_member = Member::count();
+        $total_buku = Book::count();
+        $total_penerbit = Publisher::count();
+        $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
+        function rand_color() {
+            return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        };
+       
+        
+        
+        //Data Penerbit
+        $data_donut = Book::select(DB::raw("count(publisher_id) as total"))->groupBy('publisher_id')->orderBy('publisher_id', 'asc')->pluck('total');
+        $label_donut = Publisher::orderBy('publishers.id', 'asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('name')->pluck('name');
+        
+
+        foreach ($label_donut as $key => $value) {
+            $warna[$key] = rand_color();
+        }
+
+        //Data Penulis
+        $data_donut_penulis = Book::select(DB::raw("count(author_id) as total"))->groupBy('author_id')->orderBy('author_id', 'asc')->pluck('total');
+        $label_donut_penulis = Author::orderBy('authors.id', 'asc')->join('books', 'books.author_id', '=', 'authors.id')->groupBy('name')->pluck('name');
+        
+
+        foreach ($label_donut_penulis as $key => $value) {
+            $warna_penulis[$key] = rand_color();
+        }
+       
+       
+        //Data Transaksi
+        $label_bar = ['Peminjaman', 'Pengembalian'];
+        $data_bar = [];
+
+        foreach ($label_bar as $key => $value){
+            $data_bar[$key]['label'] = $label_bar[$key];
+            $data_bar[$key]['backgroundColor'] = $key == 0 ? 'rgba(60,141,188,0.9)' : 'rgba(210,214,222,1)';
+            $data_month = [];
+            
+            foreach (range(1,12) as $month){
+                if ($key == 0){
+                $data_month[] = Transaction::select(DB::raw("count(*) as total"))->whereMonth('date_start', $month)->first()->total;
+            } else {
+                $data_month[] = Transaction::select(DB::raw("count(*) as total"))->whereMonth('date_end', $month)->first()->total;
+            }
+        }
+
+            $data_bar[$key]['data'] = $data_month;
+        }
+        
+
+        // -Data Home-
+        return view('home', compact('total_member', 'total_buku', 'total_penerbit', 'total_peminjaman', 'data_donut', 'label_donut', 'warna','data_donut_penulis', 'label_donut_penulis', 'warna_penulis', 'data_bar'));
+
+
+
         // //Eloguent publisher->Book (hasMany)
         // $publisher = Publisher::with('books')->get();
 
@@ -170,6 +226,6 @@ class HomeController extends Controller
         
 
         //Home Real
-        return view('home');
+        // return view('home');
     }
 }

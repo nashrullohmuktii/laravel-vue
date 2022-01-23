@@ -164,8 +164,9 @@
                     if (confirm("Are You Sure?")) {
                     $(event.target).parents('tr').remove();
                     axios.post(this.actionUrl+'/'+id, {_method: 'DELETE'}).then(response=>{
-                        this.get_books();
+                        $('#modal-default').modal('hide');
                         alert('Data have been removed');
+                        this.get_books();                        
                     });
                     }
                 },
