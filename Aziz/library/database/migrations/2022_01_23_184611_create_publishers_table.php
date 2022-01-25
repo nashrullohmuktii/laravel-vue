@@ -15,10 +15,10 @@ class CreatePublishersTable extends Migration
     {
         Schema::create('publishers', function (Blueprint $table) {
             $table->id();
-            $table->string('name_publish', 64);
+            $table->string('name', 64);
             $table->string('email', 64);
             $table->char('phone_number', 15);
-            $table->text('adderess');
+            $table->text('address');
             $table->timestamps();
         });
     }

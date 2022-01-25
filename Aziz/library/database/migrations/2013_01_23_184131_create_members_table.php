@@ -18,7 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('name', 64);
             $table->char('gender', 1);
             $table->char('phone_number', 15);
-            $table->text('adderess');
+            $table->text('address');
             $table->string('email', 64);
             $table->timestamps();
         });
