@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2022 at 02:26 AM
+-- Generation Time: Jan 25, 2022 at 10:02 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `authors` (
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone_number` char(14) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adress` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -98,7 +98,7 @@ CREATE TABLE `members` (
   `gender` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone_number` char(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email, 64` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -120,17 +120,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(5, '2010_01_23_000936_create_members_table', 1),
-(6, '2014_10_12_000000_create_users_table', 1),
-(7, '2014_10_12_100000_create_password_resets_table', 1),
-(8, '2019_08_19_000000_create_failed_jobs_table', 1),
-(9, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(10, '2022_01_23_002409_create_publishers_table', 1),
-(11, '2022_01_23_003039_create_authors_table', 1),
-(12, '2022_01_23_003151_create_catalogs_table', 1),
-(13, '2022_01_23_003214_create_books_table', 1),
-(14, '2022_01_23_003256_create_transactions_table', 1),
-(15, '2022_01_23_003325_create_transaction_details_table', 1);
+(27, '2010_01_23_000936_create_members_table', 1),
+(28, '2014_10_12_000000_create_users_table', 1),
+(29, '2014_10_12_100000_create_password_resets_table', 1),
+(30, '2019_08_19_000000_create_failed_jobs_table', 1),
+(31, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(32, '2022_01_23_002409_create_publishers_table', 1),
+(33, '2022_01_23_003039_create_authors_table', 1),
+(34, '2022_01_23_003151_create_catalogs_table', 1),
+(35, '2022_01_23_003214_create_books_table', 1),
+(36, '2022_01_23_003256_create_transactions_table', 1),
+(37, '2022_01_23_003325_create_transaction_details_table', 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,7 @@ CREATE TABLE `publishers` (
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone_number` char(14) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adress` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -351,7 +351,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
