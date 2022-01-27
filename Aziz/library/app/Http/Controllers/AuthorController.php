@@ -14,6 +14,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
+        $authors = Author::all();
+
+        return $authors;
         return view('admin.author.index');
     }
 
