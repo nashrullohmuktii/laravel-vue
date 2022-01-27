@@ -19,4 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+Route::get('/author', 'AuthorController@index');
+Route::get('/book', 'BookController@index');
+Route::get('/catalog', 'CatalogController@index');
+Route::get('/member', 'MemberController@index');
+Route::get('/publisher', 'PublisherController@index');
+Route::get('/transaction', 'TransactionController@index');
+Route::get('/transaction_ditail', 'TransactionDitailController@index');

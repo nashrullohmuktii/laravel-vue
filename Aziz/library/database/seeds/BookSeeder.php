@@ -12,7 +12,8 @@ class BookSeeder extends Seeder
      * @return void
      */
     public function run()
-    {$faker = Faker::create();
+    {
+        $faker = Faker::create();
 
         for($i=0; $i < 20 ; $i++){
             $book = new Book;
@@ -27,8 +28,6 @@ class BookSeeder extends Seeder
             $book->price = rand(5000, 10000);
 
             $book->save();
-
-
         }
     }
 }

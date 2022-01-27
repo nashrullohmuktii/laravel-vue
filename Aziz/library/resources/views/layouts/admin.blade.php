@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Perpustakaan | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -189,7 +189,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Perpustakaan</span>
     </a>
 
     <!-- Sidebar -->
@@ -222,13 +222,68 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{url('home')}}" class="nav-link {{ request()-> is('home') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Home
               </p>
             </a>
-            
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('author')}}" class="nav-link {{ request()-> is('author') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Author
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('book')}}" class="nav-link {{ request()-> is('book') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Book
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('catalog')}}" class="nav-link {{ request()-> is('catalog') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Catalog
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('member')}}" class="nav-link {{ request()-> is('member') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('publisher')}}" class="nav-link {{ request()-> is('publisher') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Publisher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('transaction')}}" class="nav-link {{ request()-> is('transaction') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Transaction
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{url('transaction_ditail')}}" class="nav-link {{ request()-> is('transaction_ditail') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Transaction Ditail
+              </p>
+            </a>
           </li>
         </ul>
       </nav>
@@ -244,7 +299,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">@yield('header')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             
