@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +30,6 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
     }
 
     /**
@@ -39,9 +42,9 @@ class PublisherController extends Controller
     {
         $this->validate($request, [
             'name' => ['required'],
-            'phone_number' => ['required'],
+            'phone_number' => ['required', 'max:12', 'numeric'],
             'address' => ['required'],
-            'email' => ['required']
+            'email' => ['required', 'email']
         ]);
 
         //CARA 2 INPUT DATA KE DATABASE
@@ -82,9 +85,9 @@ class PublisherController extends Controller
     {
         $this->validate($request, [
             'name' => ['required'],
-            'phone_number' => ['required'],
+            'phone_number' => ['required', 'max:12', 'numeric'],
             'address' => ['required'],
-            'email' => ['required']
+            'email' => ['required', 'email']
         ]);
 
         $publisher->update($request->all());
@@ -101,6 +104,5 @@ class PublisherController extends Controller
     public function destroy(Publisher $publisher)
     {
         $publisher->delete();
-        return redirect('publishers');
     }
 }
