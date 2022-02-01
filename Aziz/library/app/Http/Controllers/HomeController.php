@@ -193,5 +193,7 @@ class HomeController extends Controller
                  //->get();
 
         //return $data20;
+
+        return view('home');
     }
 }
