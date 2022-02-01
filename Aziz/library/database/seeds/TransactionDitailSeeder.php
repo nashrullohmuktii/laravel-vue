@@ -20,6 +20,7 @@ class TransactionDitailSeeder extends Seeder
 
             $transactionditail->transaction_id = rand(1,10);
             $transactionditail->book_id = rand(1,20);
+            $transactionditail->qty = rand(1,6);
 
             $transactionditail->save();
         }

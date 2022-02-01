@@ -17,6 +17,7 @@ class CreateTransactionDitailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('book_id');
+            $table->integer('qty');
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transactions');
