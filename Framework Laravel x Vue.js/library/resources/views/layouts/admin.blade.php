@@ -134,15 +134,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('catalog') }}" class="nav-link {{ request()->is('catalog') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-box"></i>
-              <p>
-                Catalog
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="{{ url('author') }}" class="nav-link {{ request()->is('author') ? 'active' : '' }}">
+            <a href="{{ url('authors') }}" class="nav-link {{ request()->is('author') ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Author
@@ -150,7 +142,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
+            <a href="{{ url('books') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Book
@@ -158,7 +150,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('publisher') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }}">
+            <a href="{{ url('publishers') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }}">
               <i class="nav-icon fas fa-arrow-circle-up"></i>
               <p>
                 Publisher
@@ -166,10 +158,18 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('member') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }}">
+            <a href="{{ url('members') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }}">
               <i class="nav-icon far fa-address-book"></i>
               <p>
                 Member
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ url('catalogs') }}" class="nav-link {{ request()->is('catalog') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-box"></i>
+              <p>
+                Catalog
               </p>
             </a>
           </li>

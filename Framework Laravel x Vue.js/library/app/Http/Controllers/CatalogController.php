@@ -27,7 +27,7 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.catalog.create');
     }
 
     /**
@@ -38,7 +38,27 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' => ':attribute cannot be empty',
+            'min' => ':attribute must be at least :min characters',
+            'max' => ':attribute cannot be more than :max characters',
+        ];
+
+        $this->validate($request, [
+            'name' => 'required|min:5|max:50',
+        ], $messages);
+
+        // $this->validate($request, [
+        //     'name'  => ['required'],
+        // ]);
+
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        Catalog::create($request->all());
+
+        return redirect('catalogs');
     }
 
     /**
@@ -60,7 +80,7 @@ class CatalogController extends Controller
      */
     public function edit(Catalog $catalog)
     {
-        //
+        return view('admin.catalog.edit', compact('catalog'));
     }
 
     /**
@@ -72,7 +92,23 @@ class CatalogController extends Controller
      */
     public function update(Request $request, Catalog $catalog)
     {
-        //
+        $messages = [
+            'required' => ':attribute cannot be empty',
+            'min' => ':attribute must be at least :min characters',
+            'max' => ':attribute cannot be more than :max characters',
+        ];
+
+        $this->validate($request, [
+            'name' => 'required|min:5|max:50',
+        ], $messages);
+
+        // $this->validate($request, [
+        //     'name'  => ['required'],
+        // ]);
+
+        $catalog->update($request->all());
+
+        return redirect('catalogs');
     }
 
     /**
@@ -83,6 +119,8 @@ class CatalogController extends Controller
      */
     public function destroy(Catalog $catalog)
     {
-        //
+        $catalog->delete();
+
+        return redirect('catalogs');
     }
 }
