@@ -18,6 +18,13 @@ class PublisherController extends Controller
 
         return view('admin.publisher', compact('publishers'));
     }
+    public function api()
+    {
+        $publishers = Publisher::all();
+        $datatables = datatables()->of($publishers)->addIndexColumn();
+
+        return $datatables->make(true);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -50,10 +57,6 @@ class PublisherController extends Controller
             'phone_number' => 'required|numeric',
             'address' => 'required'
         ], $messages);
-
-        // $this->validate($request, [
-        //     'name'  => ['required'],
-        // ]);
 
         Publisher::create($request->all());
 
