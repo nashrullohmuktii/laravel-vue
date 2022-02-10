@@ -22,8 +22,8 @@ class PublisherController extends Controller
     {
         $publishers = Publisher::all();
         $datatables = datatables()->of($publishers)
-            ->addColumn('date', function ($author) {
-                return convert_date($author->date);
+            ->addColumn('date', function ($publisher) {
+                return convert_date($publisher->date);
             })->addIndexColumn();
 
         return $datatables->make(true);

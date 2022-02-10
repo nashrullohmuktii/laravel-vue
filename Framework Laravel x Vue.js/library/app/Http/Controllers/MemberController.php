@@ -24,8 +24,8 @@ class MemberController extends Controller
     {
         $members = Member::all();
         $datatables = datatables()->of($members)
-            ->addColumn('date', function ($author) {
-                return convert_date($author->date);
+            ->addColumn('date', function ($member) {
+                return convert_date($member->date);
             })->addIndexColumn();
 
         return $datatables->make(true);
@@ -58,7 +58,6 @@ class MemberController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:5|max:50',
-            'gender' => 'required',
             'phone_number' => 'required|numeric',
             'address' => 'required',
             'email' => 'required'

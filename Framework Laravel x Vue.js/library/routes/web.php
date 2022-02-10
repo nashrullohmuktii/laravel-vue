@@ -45,6 +45,8 @@ Route::resource('publishers', App\Http\Controllers\PublisherController::class);
 Route::resource('authors', App\Http\Controllers\AuthorController::class);
 Route::resource('members', App\Http\Controllers\MemberController::class);
 Route::resource('books', App\Http\Controllers\BookController::class);
+Route::resource('home', App\Http\Controllers\HomeController::class);
+Route::resource('transactions', App\Http\Controllers\TransactionController::class);
 
 Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
 Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
