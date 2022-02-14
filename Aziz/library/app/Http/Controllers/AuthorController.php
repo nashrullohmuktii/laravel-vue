@@ -16,8 +16,8 @@ class AuthorController extends Controller
     {
         $authors = Author::all();
 
-        return $authors;
-        return view('admin.author.index');
+        //return $authors;
+        return view('admin.author.index',compact('authors'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.author.create');
     }
 
     /**
