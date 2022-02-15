@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 @section('header', 'Author')
 @section('css')
+{{-- CSS Data Table --}}
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 @endsection
 @section('content')
 <div id="controller">
@@ -9,7 +13,7 @@
       <div class="card">
         <div class="card-header">
           <a href="#" class="btn btn-sm btn-primary pull-right" @click="addData()">Buat Author Baru</a>
-
+{{-- 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
               <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -20,14 +24,14 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
-          <table class="table table-hover text-nowrap">
+          <table class="table table-hover text-nowrap table-bordered table-striped" id="datatable">
             <thead>
               <tr>
-                <th>No.</th>
+                <th class="text-center">No.</th>
                 <th class="text-center">Name</th>
                 <th class="text-center">Phone Number</th>
                 <th class="text-center">Address</th>
@@ -39,7 +43,7 @@
             <tbody>
               @foreach ($authors as $key => $author)
               <tr>
-                <td>{{ $key+1  }}</td>
+                <td class="text-center">{{ $key+1  }}</td>
                 <td class="text-center">{{ $author->name }}</td>
                 <td class="text-center">{{ $author->phone_number }}</td>
                 <td class="text-center">{{ $author->address }}</td>
@@ -107,7 +111,36 @@
 @endsection
 
 @section('js')
+<script src="{{  asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{  asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+{{-- crud vuejs --}}
   <script>
+     $(function () {
+    $("#datatable").DataTable({
+      "responsive": true, "lengthChange": true, "autoWidth": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
     var controller = new Vue({
       el: '#controller',
       data:{
