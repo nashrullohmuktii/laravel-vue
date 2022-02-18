@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class AuthorController extends Controller
         $authors = Author::all();
 
         //return $authors;
-        return view('admin.author.index',compact('authors'));
+        return view('admin.author',compact('authors'));
     }
 
     /**
@@ -27,7 +31,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        return view('admin.author.create');
+        //
     }
 
     /**
@@ -38,7 +42,15 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'          =>['required'],
+            'email'         =>['required'],
+            'phone_number'  =>['required'],
+            'address'       =>['required'],
+        ]);
+        Author::create($request->all());
+
+        return redirect('authors');
     }
 
     /**
@@ -72,7 +84,15 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $this->validate($request,[
+            'name'          =>['required'],
+            'email'         =>['required'],
+            'phone_number'  =>['required'],
+            'address'       =>['required'],
+        ]);
+        $author->update($request->all());
+
+        return redirect('authors');
     }
 
     /**
@@ -83,6 +103,6 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
     }
 }
