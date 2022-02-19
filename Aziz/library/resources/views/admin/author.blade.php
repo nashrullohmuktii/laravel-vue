@@ -2,7 +2,10 @@
 @section('header, Author')
 
 @section('css')
-
+<!--Datatables-->
+<link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 @endsection
 @section('content')
 <div id="controller">
@@ -25,7 +28,7 @@
   </div>
 
   <div class="card-body table-responsive p-0">
-                  <table class="table table-hover text-nowrap">
+                  <table id ="example1" class="table table-hover text-nowrap table-bordered">
                     <thead>
                       <tr>
                         <th class=text-center>Id</th>
@@ -42,14 +45,14 @@
                     <tbody>
                       @foreach($authors as $author)
                       <tr>
-                        <td>{{ $author->id }}</td>
-                        <td>{{ $author->name }}</td>
-                        <td>{{ $author->email }}</td>
-                        <td>{{ $author->address }}</td>
-                        <td>{{ $author->phone_number }}</td>
+                        <td class=text-center>{{ $author->id }}</td>
+                        <td class=text-center>{{ $author->name }}</td>
+                        <td class=text-center>{{ $author->email }}</td>
+                        <td class=text-center>{{ $author->address }}</td>
+                        <td class=text-center>{{ $author->phone_number }}</td>
                         <td class=text-center>{{date("H:i:s-d.m.Y", strtotime($author->created_at))}}</td>
                         <td class=text-center>{{date("H:i:s-d.m.Y", strtotime($author->updated_at))}}</td>
-                        <td class=text-right>
+                        <td class=text-center>
                             <a href="#" @click="editData({{$author}})" class="btn btn-warning btn-sm">Edit</a>
                             <a href="#" @click="deleteData({{$author->id}})" class="btn btn-danger btn-sm">Delete</a>
                         </td>
@@ -106,6 +109,26 @@
 @endsection
 
 @section('js')
+<!--DataTables & Plugins-->
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/plugins/jszip/jszip.min.js"></script>
+<script src="assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+  });
+</script>
+<!--CRUD Vue js-->
   <script type="text/javascript">
     var controller = new Vue({
       el: '#controller',

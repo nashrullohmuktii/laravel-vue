@@ -224,7 +224,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="{{url('home')}}" class="nav-link {{ request()-> is('home') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
@@ -232,7 +232,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('authors')}}" class="nav-link {{ request()-> is('authors') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-cube"></i>
               <p>
                 Author
               </p>
@@ -240,7 +240,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('books')}}" class="nav-link {{ request()-> is('books') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Book
               </p>
@@ -248,7 +248,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('catalogs')}}" class="nav-link {{ request()-> is('catalogs') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-folder"></i>
               <p>
                 Catalog
               </p>
@@ -256,7 +256,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('members')}}" class="nav-link {{ request()-> is('members') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Member
               </p>
@@ -264,7 +264,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('publishers')}}" class="nav-link {{ request()-> is('publishers') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-cubes"></i>
               <p>
                 Publisher
               </p>
@@ -272,7 +272,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('transactions')}}" class="nav-link {{ request()-> is('transactions') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-paper-plane"></i>
               <p>
                 Transaction
               </p>
@@ -280,7 +280,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{url('transaction_ditails')}}" class="nav-link {{ request()-> is('transaction_ditails') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-industry"></i>
               <p>
                 Transaction Ditail
               </p>
