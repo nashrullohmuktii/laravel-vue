@@ -29,9 +29,9 @@
   </div>
 
   <div class="card-body table-responsive p-0">
-    <table id ="example1" class="table table-hover text-nowrap table-bordered">
+    <table id ="datatable" class="table table-hover text-nowrap table-bordered">
       <thead>
-         <tr>
+        <tr>
           <th class=text-center>Id</th>
           <th class=text-center>Name</th>
           <th class=text-center>Email</th>
@@ -43,31 +43,13 @@
                       
         </tr>
       </thead>
-      <tbody>
-        @foreach($publishers as $key => $publisher)
-          <tr>
-            <td class=text-center>{{ $key+1 }}</td>
-            <td class=text-center>{{ $publisher->name }}</td>
-            <td class=text-center>{{ $publisher->email }}</td>
-            <td class=text-center>{{ $publisher->phone_number }}</td>
-            <td class=text-center>{{ $publisher->address }}</td>
-            <td class=text-center>{{date("H:i:s-d.m.Y", strtotime($publisher->created_at))}}</td>
-            <td class=text-center>{{date("H:i:s-d.m.Y", strtotime($publisher->updated_at))}}</td>
-            <td class=text-center>
-              <a href="#" @click="editData({{$publisher}})" class="btn btn-warning btn-sm">Edit</a>
-              <a href="#" @click="deleteData({{$publisher->id}})" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
     </table>
   </div>
 
   <div class="modal fade" id="modal-default">
       <div class="modal-dialog">
           <div class="modal-content">
-              <form method="post" :action="actionUrl" autocomplete="off">
+              <form method="post" :action="actionUrl" autocomplete="off" @submit="submitForm($event, data.id)">
                 
                 <div class="modal-header">
                       <h4 class="modal-title">Publisher</h4>
@@ -126,49 +108,22 @@
 <script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-<script>
-  $(function () {
-    $("#example1").DataTable();
-  });
-</script>
-<!--CRUD Vue js-->
 <script type="text/javascript">
-    var controller = new Vue({
-      el: '#controller',
-      data : {
-        data : {},
-        actionUrl :'{{ url('publishers') }}',
-        editStatus : false,
-      },
-      mounted: function(){
+  var actionUrl = '{{ url('publishers') }}';
+  var apiUrl = '{{ url('api/publishers') }}';
 
-      },
-      methods:{
-        addData(){
-          this.data = {};
-          this.actionUrl = '{{url('publishers')}}';
-          this.editStatus = false;
-          $('#modal-default').modal();
+  var columns = [
+    {data: 'DT_RowIndex', class: 'text-center', orderable: false},
+    {data: 'name', class: 'text-center', orderable: false},
+    {data: 'email', class: 'text-center', orderable: false},
+    {data: 'phone_number', class: 'text-center', orderable: false},
+    {data: 'address', class: 'text-center', orderable: false},
+    {render: function (index, row, data, meta){
+      return '
+        <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData(event, ${meta.row})">Edit</a><a class="btn btn-danger btn-sm" onclick="controller.deleteData(event, ${data.id})">Delete</a>';
+    }, orderable:false, width:'200px', class: 'text-center'},
+  ];
+</script>
 
-        },
-        editData(data){
-          this.data = data;
-          this.actionUrl = '{{url ('publishers') }}'+'/'+data.id;
-          this.editStatus = true;
-          $('#modal-default').modal();
-
-        },
-        deleteData(id){
-          this.actionUrl = '{{ url('publishers') }}'+'/'+id;
-          if (confirm("Are you sure ?")) {
-              axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {location.reload(); });
-          }
-
-        }
-
-      }
-    });
-  </script>
-
+<script src="{{asset('js/data.js')}}"></script>
 @endsection

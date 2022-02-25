@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Author;
 use Illuminate\Http\Request;
 
+
 class AuthorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',);
     }
     /**
      * Display a listing of the resource.
@@ -18,10 +19,18 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
+        return view('admin.author');
+        
+    }
 
-        //return $authors;
-        return view('admin.author',compact('authors'));
+    public function api()
+    {
+        $authors = Author::all();
+        dd($authors->count());
+        $datatables = datatables()->of($authors)->addIndexColumn();
+        dd($datatables);
+
+        return $datatables->make(true);
     }
 
     /**

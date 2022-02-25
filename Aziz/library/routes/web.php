@@ -28,3 +28,6 @@ Route::get('/transaction_ditails', 'TransactionDitailController@index');
 Route::resource('/catalogs', CatalogController::class);
 Route::resource('/authors', AuthorController::class);
 Route::resource('/publishers', PublisherController::class);
+
+Route::get('/api/authors', 'AuthorController@api');
+Route::get('/api/publishers', 'PublisherController@api');
