@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,16 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        // $catalogs = Catalog::all();
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+        
+        
         $catalogs = Catalog::with('books')->get();
         
         // return $catalogs;
 
-        return view('admin.catalog.index', compact('catalogs'));
+        return view('admin.catalog.index', compact('catalogs','transaksi', 'unreturn', 'count'));
     }
 
     /**
@@ -32,7 +37,11 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        return view('admin.catalog.create');
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+
+        return view('admin.catalog.create', compact('transaksi', 'unreturn', 'count'));
     }
 
     /**
@@ -71,7 +80,12 @@ class CatalogController extends Controller
      */
     public function edit(Catalog $catalog)
     {
-        return view('admin.catalog.edit',compact('catalog') );
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+        
+
+        return view('admin.catalog.edit',compact('catalog','transaksi', 'unreturn', 'count') );
     }
 
     /**

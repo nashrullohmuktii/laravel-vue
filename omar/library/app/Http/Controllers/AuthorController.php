@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\Author;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,14 @@ class AuthorController extends Controller
      */
     public function index()
     {
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+        
         // $authors = Author::with('books')->get();
 
         // return view('admin.author', compact('authors'));
-        return view('admin.author');
+        return view('admin.author', compact('transaksi', 'unreturn', 'count'));
     }
 
     // API

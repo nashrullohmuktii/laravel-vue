@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,14 @@ class PublisherController extends Controller
      */
     public function index()
     {
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+        
         // $publishers = Publisher::with('books')->get();
         
         // return view('admin.publisher', compact('publishers'));
-        return view('admin.publisher');
+        return view('admin.publisher', compact('transaksi', 'unreturn', 'count'));
     }
 
     // API

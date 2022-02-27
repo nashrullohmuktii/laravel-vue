@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\models\Author;
 use App\models\Catalog;
 use App\models\Publisher;
@@ -17,10 +18,14 @@ class BookController extends Controller
      */
     public function index()
     {
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+
         $publishers = Publisher::all();
         $catalogs = Catalog::all();
         $authors = Author::all();
-        return view('admin.book', compact('publishers', 'catalogs', 'authors'));
+        return view('admin.book', compact('publishers', 'catalogs', 'authors', 'transaksi', 'unreturn', 'count'));
     }
 
     public function api()

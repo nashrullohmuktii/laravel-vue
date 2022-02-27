@@ -32,11 +32,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //data notification
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+       
+
         // Data Home       
         $total_member = Member::count();
         $total_buku = Book::count();
         $total_penerbit = Publisher::count();
-        $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
+        $total_peminjaman = Transaction::count();
+        // $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
         function rand_color() {
             return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
         };
@@ -84,7 +91,7 @@ class HomeController extends Controller
         
 
         // -Data Home-
-        return view('home', compact('total_member', 'total_buku', 'total_penerbit', 'total_peminjaman', 'data_donut', 'label_donut', 'warna','data_donut_penulis', 'label_donut_penulis', 'warna_penulis', 'data_bar'));
+        return view('home', compact('total_member', 'total_buku', 'total_penerbit', 'total_peminjaman', 'data_donut', 'label_donut', 'warna','data_donut_penulis', 'label_donut_penulis', 'warna_penulis', 'data_bar', 'transaksi', 'unreturn', 'count'));
 
 
 

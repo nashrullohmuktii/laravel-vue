@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class MemberController extends Controller
      */
     public function index()
     { 
-        return view('admin.member');
+        $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
+        $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
+        $count = $unreturn->count();
+        
+        return view('admin.member', compact('transaksi', 'unreturn', 'count'));
     }
 
     // API

@@ -30,7 +30,8 @@
         },
 
         "files" : [
-            "app/helpers/helpers.php"
+            "app/helpers/helpers.php",
+            "app/helpers/notif.php"
         ]
     },
     "autoload-dev": {
