@@ -19,7 +19,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-    
+        if (auth()->user()->can('index transaction')) {
         $transaksi = Transaction::with("member")->select("*" ,Transaction::raw("DATEDIFF(now(), date_start)AS Days"))->get();
         $unreturn = $transaksi->where("status", 0)->where("Days", ">", 3);
         $count = $unreturn->count();
@@ -27,7 +27,10 @@ class TransactionController extends Controller
         $transaction_details = TransactionDetail::all();
         $members = Member::all();
         $books = Book::all();
-        return view('admin.transaction.index', compact('transaction_details', 'members','books', 'transaksi', 'unreturn', 'count'));
+            return view('admin.transaction.index', compact('transaction_details', 'members','books', 'transaksi', 'unreturn', 'count'));
+        } else {
+           return abort('403');
+        }
     }
 
     Public function api(Request $request){
@@ -184,6 +187,10 @@ class TransactionController extends Controller
         } 
         $members = Member::all();
         $books = Book::all();
+
+        
+        
+
         return view('admin.transaction.edit', compact('transaction', 'transaction_details', 'members','books', 'bukus', 'transaksi', 'unreturn', 'count'));
     }
 

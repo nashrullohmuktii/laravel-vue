@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\TransactionDetail;
 use App\Models\Transaction;
 use App\Models\Catalog;
@@ -10,6 +11,8 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 use Illuminate\Support\Facades\DB;
 
@@ -234,5 +237,30 @@ class HomeController extends Controller
 
         //Home Real
         // return view('home');
+    }
+
+    public function spatietest(){
+
+        // Buat Role - permission //
+        // $role = Role::create(['name' => 'staff']);
+        // $permission = Permission::create(['name' => 'index transaction']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+
+        // // Daftar user ke Role //
+        // $user = auth()->user();
+        // $user->assignRole('staff');
+
+
+        // Cek status User //
+        // $user = User::with('roles')->get();
+        // Return $user;
+
+
+        // // Hapus user ke Role //
+        // $user = auth()->user();
+        // $user->removeRole('staff');
     }
 }

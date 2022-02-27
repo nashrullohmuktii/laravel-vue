@@ -21,6 +21,7 @@ Auth::routes();
 
 // Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/spatie', [App\Http\Controllers\HomeController::class, 'spatietest']);
 
 
 

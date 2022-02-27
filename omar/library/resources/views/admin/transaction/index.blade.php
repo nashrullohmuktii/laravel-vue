@@ -14,6 +14,7 @@
 @endsection
 
 @section('content')
+
 <div id="controller">
     <div class="container">
       <div class="card">
