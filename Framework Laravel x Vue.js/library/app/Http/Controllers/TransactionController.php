@@ -20,13 +20,17 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->can('index transaction')) {
+            $transactions = Transaction::all();
+            $members = Member::all();
+            $transactionDetails = TransactionDetail::all();
+            $books = Book::all();
 
-        $transactions = Transaction::all();
-        $members = Member::all();
-        $transactionDetails = TransactionDetail::all();
-        $books = Book::all();
-
-        return view('admin.transaction.index', compact('transactions', 'members', 'transactionDetails', 'books'));
+            return view('admin.transaction.index', compact('transactions', 'members', 'transactionDetails', 'books'));
+        } else {
+            return abort('403');
+        }
+        // atau if(auth()->user()->role('petugas')) //
     }
 
     public function api(Request $request)
@@ -63,7 +67,7 @@ class TransactionController extends Controller
                 ->where('transaction_id', $transaction->id)
                 ->get();
             foreach ($total_prices as $total_price) {
-                $transaction->total_price = $total_price->totalPrice;
+                $transaction->total_price = formatRP($total_price->totalPrice);
             }
 
             $startDate = new DateTime($transaction->date_start); // atau new Carbon($transaction->date_start);

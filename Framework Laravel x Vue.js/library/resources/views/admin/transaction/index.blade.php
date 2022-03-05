@@ -11,6 +11,8 @@
 
 @section('content')
 
+@can('index transaction') 
+{{-- atau @role('petugas') // @endrole --}}
 <div id="controller">
     <div class="card">
         <div class="card-header">
@@ -38,7 +40,7 @@
                     <!-- /.card-header -->
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="overflow-x:auto;">
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -58,6 +60,7 @@
         </div>
     </div>
 </div>
+@endcan
  
 @endsection
 

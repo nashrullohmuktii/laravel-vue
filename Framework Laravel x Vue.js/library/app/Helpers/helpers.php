@@ -14,10 +14,10 @@ function new_formatDate($value)
     return date('d M Y', strtotime($value));
 }
 
-function unixTimestamp($value)
+function formatRP($angka)
 {
-    $timestamp = strtotime($value);
-    return $timestamp;
+    $hasil_rupiah = "Rp " . number_format($angka, 2, ',', '.');
+    return $hasil_rupiah;
 }
 
 function dateExpired()

@@ -10,7 +10,10 @@ use App\Models\Author;
 use App\Models\Catalog;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -62,5 +65,25 @@ class HomeController extends Controller
         }
 
         return view('home', compact('totalBook', 'totalAuthor', 'publisherData', 'transactionData', 'data_donut', 'label_donut', 'data_bar'));
+    }
+
+    public function test_spatie()
+    {
+        // $role = Role::create(['name' => 'petugas']);
+        // $permission = Permission::create(['name' => 'index transaction']);
+
+        // // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        // $user = auth()->user();
+        // // $user = User::where('id', 1)->first();
+        // $user->assignRole('petugas');
+        // return $user;
+
+        // $user = User::with('roles')->get();
+        // return $user;
+
+        // // $user = auth()->user();
+        // $user->removeRole('petugas');
     }
 }
