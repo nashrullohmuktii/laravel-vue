@@ -38,7 +38,7 @@ class HomeController extends Controller
         $totalBook = Book::count();
         $totalAuthor = Author::count();
         $publisherData = Publisher::count();
-        $transactionData = Transaction::whereMonth('date_start', date('m'))->count();
+        $transactionData = Transaction::count();
 
         $data_donut = Book::select(DB::raw("COUNT(publisher_id) as total"))->groupBy('publisher_id')->orderBy('publisher_id', 'asc')->pluck('total');
         $label_donut = Publisher::orderBy('publisher_id', 'asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('publishers.name')->pluck('publishers.name');
@@ -53,12 +53,11 @@ class HomeController extends Controller
 
             foreach (range(1, 12) as $month) {
                 if ($key == 0) {
-                    $data_month = Transaction::select(DB::raw("count(*) as total"))->whereMonth('date_start', $month)->first()->total;
+                    $data_month[] = Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_start', $month)->first()->total;
                 } else {
-                    $data_month = Transaction::select(DB::raw("count(*) as total"))->whereMonth('date_end', $month)->first()->total;
+                    $data_month[] = Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_end', $month)->first()->total;
                 }
             }
-
             $data_bar[$key]['data'] = $data_month;
         }
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Library</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -32,7 +32,6 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-     
     </ul>
 
     <!-- Right navbar links -->
@@ -62,27 +61,30 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-
-          </a>
-
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
+            @if(jumlahDateExpired() !==0)
+            <span class="badge badge-warning navbar-badge"> {{ jumlahDateExpired() }} </span>
+            @endif
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">{{ jumlahDateExpired() }} Notifications</span>
+        <div class="dropdown-divider"></div>
+        @foreach(dateExpired() as $dateExpired)
+          <a href="{{ url('transactions/'."$dateExpired->tr_id") }}" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i>{{ $dateExpired->name }} 
+            <span class="float-right text-muted text-sm">{{ $dateExpired->long_day }}</span>
+          </a>
+        @endforeach
+        <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">Close</a>
         </div>
       </li>
-      <li class="nav-item">
+      <!-- fullscreen -->
+      {{-- <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
                      onclick="event.preventDefault();

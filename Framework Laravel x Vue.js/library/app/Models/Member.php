@@ -15,4 +15,8 @@ class Member extends Model
     {
         return $this->hasOne('App\Models\User', 'member_id');
     }
+    public function transaction()
+    {
+        return $this->belongsTo('App\Models\Transaction', 'member_id');
+    }
 }
