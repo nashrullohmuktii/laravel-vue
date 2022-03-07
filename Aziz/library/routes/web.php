@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/books', 'BookController@index');
 Route::get('/members', 'MemberController@index');
 Route::get('/transactions', 'TransactionController@index');
 Route::get('/transaction_ditails', 'TransactionDitailController@index');
@@ -28,6 +27,8 @@ Route::get('/transaction_ditails', 'TransactionDitailController@index');
 Route::resource('/catalogs', CatalogController::class);
 Route::resource('/authors', AuthorController::class);
 Route::resource('/publishers', PublisherController::class);
+Route::resource('/books', BookController::class);
 
 Route::get('/api/authors', 'AuthorController@api');
 Route::get('/api/publishers', 'PublisherController@api');
+Route::get('/api/books', 'BookController@api');

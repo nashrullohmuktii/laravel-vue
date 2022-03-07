@@ -2,5 +2,5 @@
 @section('header, Home')
 
 @section('content')
- ini adalah halaman Home
+ini adalah halaman Home
 @endsection

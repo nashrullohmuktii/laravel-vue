@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    protected $fillable = ['isbn','title','year','publisher_id','author_id','catalog_id','qty','price'];
     public function publiser()
     {
         return $this->belongsTo('App\Publisher','publisher_id');

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Publisher;
+use App\Catalog;
+use App\Author;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -14,10 +17,16 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::with('publiser','author','catalog')->get();
+        $publishers = Publisher::all();
+        $authors    = Author::all();
+        $catalogs   = Catalog::all();
+        return view('admin.book', compact('publishers','authors','catalogs'));
+    }
 
-        return $books;
-        return view('admin.book.index');
+    public function api()
+    {
+        $books = Book::all();
+        return json_encode($books);
     }
 
     /**
@@ -38,7 +47,19 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'isbn'          =>['required'],
+            'title'         =>['required'],
+            'year'          =>['required'],
+            'publisher_id'  =>['required'],
+            'author_id'     =>['required'],
+            'catalog_id'    =>['required'],
+            'qty'           =>['required'],
+            'price'         =>['required'],
+        ]);
+
+        Book::create($request->all());
+        return redirect('books');
     }
 
     /**
@@ -72,7 +93,19 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $this->validate($request,[
+            'isbn'          =>['required'],
+            'title'         =>['required'],
+            'year'          =>['required'],
+            'publisher_id'  =>['required'],
+            'author_id'     =>['required'],
+            'catalog_id'    =>['required'],
+            'qty'           =>['required'],
+            'price'         =>['required'],
+        ]);
+
+        $book->update($request->all());
+        return redirect('books');
     }
 
     /**
@@ -83,6 +116,6 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
     }
 }
