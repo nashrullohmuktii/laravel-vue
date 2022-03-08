@@ -31,15 +31,14 @@
                   <table id ="datatable" class="table table-hover text-nowrap table-bordered">
                     <thead>
                       <tr>
-                        <th class=text-center>Id</th>
+                        <th class=text-center>No.</th>
                         <th class=text-center>Name</th>
                         <th class=text-center>E.mail</th>
-                        <th class=text-center>Address</th>
                         <th class=text-center>Phone Number</th>
+                        <th class=text-center>Address</th>
                         <th class=text-center>Created at</th>
                         <th class=text-center>Updated at</th>
                         <th class=text-center>Action</th>
-                        
                       </tr>
 
                   </table>
@@ -115,12 +114,17 @@
     {data: 'email', class: 'text-center', orderable: false},
     {data: 'phone_number', class: 'text-center', orderable: false},
     {data: 'address', class: 'text-center', orderable: false},
+    {data: 'date', class: 'text-center', orderable: false},
+    {data: 'date2', class: 'text-center', orderable: false},
     {render: function (index, row, data, meta){
       return `
-        <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData(event, ${meta.row})">Edit</a><a class="btn btn-danger btn-sm" onclick="controller.deleteData(event, ${data.id})">Delete</a>`;
+        <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData(event, ${meta.row})">Edit</a>
+        <a class="btn btn-danger btn-sm" onclick="controller.deleteData(event, ${data.id})">Delete</a>`;
     }, orderable:false, width:'200px', class: 'text-center'},
   ];
+  
 </script>
+
 <script src="{{asset('js/data.js')}}"></script>
 
 <!--<script>

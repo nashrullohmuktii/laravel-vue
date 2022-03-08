@@ -24,7 +24,11 @@ class PublisherController extends Controller
     public function api()
     {
         $publishers = Publisher::all();
-        $datatables = datatables()->of($publishers)->addIndexColumn();
+        $datatables = datatables()->of($publishers)->addColumn('date', function($author){
+            return convert_date($author->created_at);
+        })->addColumn('date2', function($author){
+            return convert_date($author->updated_at);
+        })->addIndexColumn();
 
         return $datatables->make(true);
     }
@@ -47,7 +51,6 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-     
         $this->validate($request,[
             'name'          =>['required'],
             'email'         =>['required'],
