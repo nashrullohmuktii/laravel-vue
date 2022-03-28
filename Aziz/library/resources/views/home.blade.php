@@ -240,7 +240,7 @@
     // Get context with jQuery - using jQuery's .get() method.
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
     var donutData        = {
-        labels:label_donut,//JSON.parse(label_donut)
+        labels:label_donut,
         datasets: [
             {
                 data:data_donut,//JSON.parse(data_donut)

@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransactionDitail extends Model
 {
-    public function transaction()
+
+    protected $fillable = ['transaction_id', 'book_id', 'qty'];
+
+    public function transactions()
     {
-        return $this->belongsTo('App\Transaction','transaction_id');
+        return $this->belongsTo('App\Transaction', 'transaction_id');
     }
+
     public function book()
     {
-        return $this->belongsTo('App\Book','book_id');
+        return $this->belongsTo('App\Book', 'book_id');
     }
 }

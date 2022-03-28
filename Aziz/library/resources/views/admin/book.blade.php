@@ -64,7 +64,7 @@
                             <p>
                                 <select name="publisher_id" class="form-controler" style="width: 100%">
                                     @foreach ($publishers as $publisher)
-                                        <option :selected="book.publisher_id == {{$publisher->id}}" value="{{$publisher->id}}">{{$publisher->name}}></option>
+                                        <option :selected="book.publisher_id == {{$publisher->id}}" value="{{$publisher->id}}">{{$publisher->name}}</option>
                                     @endforeach
                                 </select>
                             </p>
@@ -74,7 +74,7 @@
                             <p>
                                 <select name="author_id" class="form-controler" style="width: 100%">
                                     @foreach ($authors as $author)
-                                        <option :selected="book.author_id == {{$author->id}}" value="{{$author->id}}">{{$author->name}}></option>
+                                        <option :selected="book.author_id == {{$author->id}}" value="{{$author->id}}">{{$author->name}}</option>
                                     @endforeach
                                 </select>
                             </p>
@@ -84,7 +84,7 @@
                             <p>
                                 <select name="catalog_id" class="form-controler" style="width: 100%">
                                     @foreach ($catalogs as $catalog)
-                                        <option :selected="book.catalog_id == {{$catalog->id}}" value="{{$catalog->id}}">{{$catalog->name}}></option>
+                                        <option :selected="book.catalog_id == {{$catalog->id}}" value="{{$catalog->id}}">{{$catalog->name}}</option>
                                     @endforeach
                                 </select>
                             </p>

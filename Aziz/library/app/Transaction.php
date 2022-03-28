@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    public function Member()
+
+    protected $fillable = ['member_id','date_start','date_end','status'];
+    
+    public function member()
     {
-        return $this->hasOne('App\User','member_id');
+        return $this->belongsTo('App\Member', 'member_id');
     }
+
     public function transactionditail()
     {
-        return $this->hasMany('App\TransactionDitail','transaction_id');
+        return $this->hasMany('App\TransactionDitail', 'transaction_id');
     }
+
 }

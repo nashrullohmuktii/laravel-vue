@@ -22,6 +22,6 @@ class Book extends Model
     }
     public function transactionditail()
     {
-        return $this->hasMany('App\TransactionDitail','book>_id');
+        return $this->hasMany('App\TransactionDitail','book_id');
     }
 }

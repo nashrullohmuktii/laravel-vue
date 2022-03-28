@@ -88,9 +88,7 @@ class CatalogController extends Controller
     public function update(Request $request, Catalog $catalog)
     {
         $this->validate($request,['name' =>['required']]);
-       
         $catalog->update($request->all());
-
         return redirect('catalogs');
     }
 
