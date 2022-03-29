@@ -36,6 +36,10 @@ Route::get('/api/publishers', 'PublisherController@api');
 Route::get('/api/books', 'BookController@api');
 Route::get('/api/members', 'MemberController@api');
 Route::get('/api/transactions', 'TransactionController@api');
+
+//Route::get('/test_spatie', HomeController::class, 'test_spatie');
+Route::get('/test_spatie/home', 'HomeController@test_spatie');
+
 //Route::get('/transactions/{transaction}/edit', [App\Http\Controllers\TransactionController::class, 'edit']);
 //Route::put('/transactions/{transaction}', [App\Http\Controllers\TransactionController::class, 'update']);
 

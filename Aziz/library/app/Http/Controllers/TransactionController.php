@@ -18,12 +18,22 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->can('index transaction')){
+            $transactionditails = TransactionDitail::all();
+            $members = Member::all();
+            $books = Book::all();
+            $transactions = Transaction::all();
+
         $transactionditails = TransactionDitail::all();
         $members = Member::all();
         $books = Book::all();
         $transactions = Transaction::all();
 
         return view('admin.transaction.index',compact('transactions','books','members','transactionditails'));
+            return view('admin.transaction.index',compact('transactions','books','members','transactionditails'));
+        }else{
+            return abort('403');
+        }
     }
 
     public function api(Request $request)

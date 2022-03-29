@@ -12,8 +12,10 @@ use App\Member;
 use App\Publisher;
 use Illuminate\Http\Request;
 
+
 class AdminController extends Controller
 {
+    
     public function dashboard(){
         $total_member = Member::count();
         $total_book = Book::count();

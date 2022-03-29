@@ -10,6 +10,8 @@
 @endsection
 
 @section('content')
+@can('index transaction')
+{{--@role(adminWeb) //@endrole--}}
 <div id="controller">
     <div class="card-header">
         <h3 class="card-title">Data Transaction</h3>
@@ -17,10 +19,10 @@
 
     <div class="card-header">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-6">
                 <a href ="{{url('transactions/create')}}" @click="addData()" class="btn btn-sm btn-primary pull right">Create New Transaction</a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <select class="form-control" name="date_start">
                     <option value="">Transaction Date</option>
                         @foreach ($transactions as $transaction)
@@ -28,7 +30,7 @@
                         @endforeach
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <select class="form-control" name="status">
                     <option value="">All Status</option>
                     <option value="0">Has Been Returned</option>
@@ -56,6 +58,7 @@
         </table>
     </div>
 </div>
+@endcan
 @endsection
 
 @section('js')

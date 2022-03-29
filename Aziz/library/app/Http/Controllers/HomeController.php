@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Book;
 use App\Catalog;
+use App\User;
 use App\Member;
 use App\Publisher;
 use App\Transaction;
 use App\TransactionDitail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 class HomeController extends Controller
@@ -227,5 +230,28 @@ class HomeController extends Controller
         //return $data20;
 
         return view('home');
+    }
+    public function test_spatie()
+    {
+
+        //$role = Role::create(['name' => 'adminWeb']);
+        //$permission = Permission::create(['name' => 'index transaction']);
+
+        //$role->givePermissionTo($permission);
+        //$permission->assignRole($role);
+
+        //$user = auth()->user();
+        //$user = User::where('id', 2)->first();
+        //$user->assignRole('adminWeb');
+        //return $user;
+
+        //$user = User::with('roles')->get();
+        //return $user;
+
+        //$user = auth()->user();
+        //$user->removeRole('adminWeb');
+
+        //$user = User::where('id', 2)->first();
+        //$user->removeRole('adminWeb');
     }
 }
