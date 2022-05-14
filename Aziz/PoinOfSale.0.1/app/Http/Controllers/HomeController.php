@@ -37,6 +37,17 @@ class HomeController extends Controller
         $total_prduct   = Product::count();
 
 
-        return view('home', compact('total_suplier', 'total_type', 'total_customer', 'total_prduct'));
+        
+
+        //Bar Chart Products
+        $label_bar = Product::orderBy('products.id', 'asc')->groupBy('name_product')->pluck('name_product');
+        $dataqty_bar = Product::orderBy('products.id', 'asc')->groupBy('qty')->pluck('qty');
+        //$dataprice_bar = Product::orderBy('products.id', 'asc')->groupBy('price')->pluck('price');
+
+
+        //return $datatables;
+
+        return view('home', compact('total_suplier', 'total_type', 'total_customer', 'total_prduct','label_bar','dataqty_bar'));
+        
     }
 }

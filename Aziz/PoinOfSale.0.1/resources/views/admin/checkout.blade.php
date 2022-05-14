@@ -59,8 +59,8 @@
                         <div class="col-md-3">
                             <select class="form-control" name="status">
                                 <option value="">All Status</option>
-                                <option value="0">Pending</option>
-                                <option value="1">Success</option>
+                                <option value="1">Pending</option>
+                                <option value="0">Success</option>
                                 
                             </select>
                         </div>
@@ -179,8 +179,8 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select name="status" class="form-control" required="" :value="data.status">
-                                        <option :selected="data.status" value="0">Pending</option>
-                                        <option :selected="data.status" value="1">Success</option>
+                                        <option :selected="data.status" value="1">Pending</option>
+                                        <option :selected="data.status" value="0">Success</option>
                                     </select>
                                 </div>
                             </div>

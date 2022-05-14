@@ -50,9 +50,9 @@ class CheckoutController extends Controller
         foreach ($checkouts as $checkout)
         {
             if ($checkout->status == 1){
-                $checkout->status ="Success";
+                $checkout->status ="Pending";
             }else{
-                $checkout->status="Pending";
+                $checkout->status="Success";
             }
             $total_products=Konfirmation::selectRaw("SUM(qty) as totalProduct")
                 ->where('checkout_id', $checkout->id)
@@ -130,11 +130,12 @@ class CheckoutController extends Controller
                 ->where('checkout_id', $checkout->id)
                 ->get();
             foreach ($konfirmations as $konfirmation) {
-                $product2s = Product::select('name_product', 'qty', 'price')
+                $product2s = Product::select('name_product', 'price')
                     ->where('id', $konfirmation->product_id)
                     ->get();
+                //$konfirmation->qty1= $konfirmations->qty;
                 foreach($product2s as $product2){
-                        $konfirmation->qty1= $product2->qty;
+                        //$konfirmation->qty1= $product2->qty;
                         $konfirmation->title= $product2->name_product;
                         $konfirmation->price1= currency_IDR($product2->price);
                     }
@@ -196,11 +197,13 @@ class CheckoutController extends Controller
             'date_start'=>$request->date_start,
             'customer_id'=>$request->customer_id]);
         
-        if($updatecheckout && $request->status == 1){
+        if($updatecheckout && $request->status == 0){
             foreach ($request->product_id as $product_id) {
                 Product::where("id", $product_id)->increment("qty");
             }
         }
+        
+        return redirect('checkouts');
     }
 
     /**

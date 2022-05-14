@@ -13,13 +13,18 @@ use App\Models\Checkout;
     }
 
     function totalnotif(){
-        //$now = new DateTime('now');
-        $checkouts= Checkout::select('checkouts.id', 'checkouts.date_start')
-            //->where('date_start','<=', $now)
-            ->where('status','=',0)
+        $checkouts= Checkout::select('checkouts.id', 'checkouts.date_start', 'checkouts.status')
+            ->where('status','=',1)
             ->get();
-        
         return count($checkouts);
+    }
+
+    function messagenotif(){
+        $checkouts = Checkout::select('checkouts.id', 'checkouts.date_start', 'customers.name')
+            ->join('customers', 'customers.id','=', 'customer_id')
+            ->where('status','=',1)
+            ->get();
+        return($checkouts);
     }
     
 
